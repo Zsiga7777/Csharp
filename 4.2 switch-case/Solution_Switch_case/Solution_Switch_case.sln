@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_01", "feladat_01\feladat_01.csproj", "{AADFE03E-6707-44DE-A766-C4F773D87C55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_01", "feladat_01\feladat_01.csproj", "{AADFE03E-6707-44DE-A766-C4F773D87C55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_02", "feladat_02\feladat_02.csproj", "{3CD81824-2E2C-46BC-9D32-CCF618878ECC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_02", "feladat_02\feladat_02.csproj", "{3CD81824-2E2C-46BC-9D32-CCF618878ECC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_03", "feladat_03\feladat_03.csproj", "{9CCFC503-C52D-4DF4-8D8D-81F1A9C57668}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_03", "feladat_03\feladat_03.csproj", "{9CCFC503-C52D-4DF4-8D8D-81F1A9C57668}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_04", "feladat_04\feladat_04.csproj", "{752F8228-5DF0-4DBD-A066-C2A56E3AD15D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_04", "feladat_04\feladat_04.csproj", "{752F8228-5DF0-4DBD-A066-C2A56E3AD15D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_05", "feladat_05\feladat_05.csproj", "{BAB4D596-706F-4B14-8187-DB1A9F99DB2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_05", "feladat_05\feladat_05.csproj", "{BAB4D596-706F-4B14-8187-DB1A9F99DB2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_06", "feladat_06\feladat_06.csproj", "{C0B0C639-9930-4636-AE28-BEC94C5CD5FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_06", "feladat_06\feladat_06.csproj", "{C0B0C639-9930-4636-AE28-BEC94C5CD5FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_07", "feladat_07\feladat_07.csproj", "{8193927C-0558-4FB9-B507-3077421A12E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{C0B0C639-9930-4636-AE28-BEC94C5CD5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0B0C639-9930-4636-AE28-BEC94C5CD5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0B0C639-9930-4636-AE28-BEC94C5CD5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8193927C-0558-4FB9-B507-3077421A12E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8193927C-0558-4FB9-B507-3077421A12E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8193927C-0558-4FB9-B507-3077421A12E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8193927C-0558-4FB9-B507-3077421A12E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
