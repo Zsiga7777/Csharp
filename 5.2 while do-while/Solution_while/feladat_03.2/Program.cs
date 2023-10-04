@@ -1,10 +1,10 @@
 ﻿Random rnd = new Random();
 int life = 5;
-int random = rnd.Next(0, 11);
+int random = rnd.Next(0, 10);
 int number = 0;
 bool isNumber = false;
 
-while (!isNumber || (number < 0 || number > 10) || !(number == random || life < 0)) 
+while (!isNumber && !(number >= 0 && number <= 9) || !(number == random) && !(life <= 0)) 
 {
     life--;
 
@@ -17,18 +17,15 @@ while (!isNumber || (number < 0 || number > 10) || !(number == random || life < 
     {
         Console.WriteLine("Nem számot adott meg");
     }
-    else if (number < 0 || number > 10)
+    else if (number < 0 || number > 9)
     {
         Console.WriteLine("Tartományon kívüli számot adott meg");
     }
-
-
-
 }
 
 
 
-if (life >= 0)
+if (life >= 0 && random == number)
 {
     Console.WriteLine($"Gratulálok, kitalálta a számot {random}, és ennyi élete maradt: {life}");
 }
