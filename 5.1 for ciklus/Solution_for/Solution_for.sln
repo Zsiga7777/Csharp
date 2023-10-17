@@ -3,37 +3,41 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_01", "feladat_01\feladat_01.csproj", "{E0C08D12-A77E-4E55-AD74-761C11312687}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_01", "feladat_01\feladat_01.csproj", "{E0C08D12-A77E-4E55-AD74-761C11312687}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_02", "feladat_02\feladat_02.csproj", "{D32C98EC-E5D7-4B87-9ABB-911108AB5F44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_02", "feladat_02\feladat_02.csproj", "{D32C98EC-E5D7-4B87-9ABB-911108AB5F44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_03", "feladat_03\feladat_03.csproj", "{0751C7B4-37A2-48DD-965E-4299315F0925}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_03", "feladat_03\feladat_03.csproj", "{0751C7B4-37A2-48DD-965E-4299315F0925}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_04", "feladat_04\feladat_04.csproj", "{67827993-A28A-470A-81D8-C4BFB082A0D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_04", "feladat_04\feladat_04.csproj", "{67827993-A28A-470A-81D8-C4BFB082A0D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_05", "feladat_05\feladat_05.csproj", "{D490DEF9-8B02-428F-9539-9B454423C57B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_05", "feladat_05\feladat_05.csproj", "{D490DEF9-8B02-428F-9539-9B454423C57B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_06", "feladat_06\feladat_06.csproj", "{FA0170C2-C110-498C-8770-0250E9FA3D76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_06", "feladat_06\feladat_06.csproj", "{FA0170C2-C110-498C-8770-0250E9FA3D76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_07", "feladat_07\feladat_07.csproj", "{3B4478B4-865E-4E31-8EB0-D9572BF5FFA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_07", "feladat_07\feladat_07.csproj", "{3B4478B4-865E-4E31-8EB0-D9572BF5FFA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_08", "feladat_08\feladat_08.csproj", "{B03D0705-ED13-486C-BA65-FAB797D83D87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_08", "feladat_08\feladat_08.csproj", "{B03D0705-ED13-486C-BA65-FAB797D83D87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_09", "feladat_09\feladat_09.csproj", "{4B344234-501F-44F1-A687-46968069BDC2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_09", "feladat_09\feladat_09.csproj", "{4B344234-501F-44F1-A687-46968069BDC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_10", "feladat_10\feladat_10.csproj", "{81C44EE1-BD62-4151-BC46-9B1B9F779856}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_10", "feladat_10\feladat_10.csproj", "{81C44EE1-BD62-4151-BC46-9B1B9F779856}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_11", "feladat_11\feladat_11.csproj", "{B42D1F07-20FC-4788-908C-726694685A78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_11", "feladat_11\feladat_11.csproj", "{B42D1F07-20FC-4788-908C-726694685A78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_12", "feladat_12\feladat_12.csproj", "{D1F6C40B-D2CC-4D2B-8F71-DEA0EE03BCBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_12", "feladat_12\feladat_12.csproj", "{D1F6C40B-D2CC-4D2B-8F71-DEA0EE03BCBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_13", "feladat_13\feladat_13.csproj", "{25F97391-0D6E-40D9-A881-972604A6C3D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_13", "feladat_13\feladat_13.csproj", "{25F97391-0D6E-40D9-A881-972604A6C3D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_14", "feladat_14\feladat_14.csproj", "{4FB0A617-56E2-49F4-B224-7AD46129CF7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_14", "feladat_14\feladat_14.csproj", "{4FB0A617-56E2-49F4-B224-7AD46129CF7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_15", "feladat_15\feladat_15.csproj", "{885794BC-3529-4255-AA47-F0B9B3139D03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_15", "feladat_15\feladat_15.csproj", "{885794BC-3529-4255-AA47-F0B9B3139D03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_16", "feladat_16\feladat_16.csproj", "{8C2D05F1-6F45-4DCF-BD9D-E72071C0EB08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "feladat_16", "feladat_16\feladat_16.csproj", "{8C2D05F1-6F45-4DCF-BD9D-E72071C0EB08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_17", "feladat_17\feladat_17.csproj", "{AB447D42-6961-42EF-9DCD-6BBAA2F5E7C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "feladat_18", "feladat_18\feladat_18.csproj", "{B1D3033F-397C-4E03-998D-F3E2A7FBA7AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +109,14 @@ Global
 		{8C2D05F1-6F45-4DCF-BD9D-E72071C0EB08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C2D05F1-6F45-4DCF-BD9D-E72071C0EB08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C2D05F1-6F45-4DCF-BD9D-E72071C0EB08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB447D42-6961-42EF-9DCD-6BBAA2F5E7C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB447D42-6961-42EF-9DCD-6BBAA2F5E7C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB447D42-6961-42EF-9DCD-6BBAA2F5E7C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB447D42-6961-42EF-9DCD-6BBAA2F5E7C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1D3033F-397C-4E03-998D-F3E2A7FBA7AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1D3033F-397C-4E03-998D-F3E2A7FBA7AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1D3033F-397C-4E03-998D-F3E2A7FBA7AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1D3033F-397C-4E03-998D-F3E2A7FBA7AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

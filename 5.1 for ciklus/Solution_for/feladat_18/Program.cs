@@ -1,6 +1,8 @@
 ﻿int starter;
 int ender;
 bool Isnumber = false;
+int sum = 0;
+bool counter = true;
 
 do
 {
@@ -20,13 +22,18 @@ do
 }
 while (!Isnumber || ender < starter);
 
-if (starter %2 ==0)
+for (int i = starter; i <= ender; i++)
 {
-    for (int i = starter+1; i <= ender; i+=2)
-    { Console.WriteLine(i); }
+    if (counter)
+    {
+        sum += i;
+        counter = false;
+    }
+    else
+    { 
+        sum -= i;
+        counter = true;
+    }
 }
-else
-{
-    for (int i = starter ; i <= ender; i += 2)
-    { Console.WriteLine(i); }
-}
+
+Console.WriteLine(sum);

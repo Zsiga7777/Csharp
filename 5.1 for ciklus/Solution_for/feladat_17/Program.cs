@@ -1,6 +1,10 @@
 ﻿int starter;
 int ender;
 bool Isnumber = false;
+int sum = 0;
+double avarage = 0;
+int amount = 0;
+
 
 do
 {
@@ -20,13 +24,11 @@ do
 }
 while (!Isnumber || ender < starter);
 
-if (starter %2 ==0)
+for (int i = starter; i <= ender; i++)
 {
-    for (int i = starter+1; i <= ender; i+=2)
-    { Console.WriteLine(i); }
+    sum += i;
+    amount++;
 }
-else
-{
-    for (int i = starter ; i <= ender; i += 2)
-    { Console.WriteLine(i); }
-}
+
+avarage = (double)(sum) / (double)(amount);
+Console.WriteLine($"A számok átlaga: {avarage} ");

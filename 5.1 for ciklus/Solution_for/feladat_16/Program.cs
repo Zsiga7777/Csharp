@@ -19,12 +19,12 @@ while (!Isnumber);
 Isnumber = false;
 do
 {
-    Console.Write("Please enter an end value: ");
+    Console.Write("Please enter an end value that is bigger than the previous number: ");
     string input = Console.ReadLine();
 
     Isnumber = int.TryParse(input, out ender);
 }
-while (!Isnumber);
+while (!Isnumber || ender < starter);
 
 for (int i = starter; i <= ender; i++)
 {
@@ -39,7 +39,7 @@ for (int i = starter; i <= ender; i++)
         oddAmount++;
     }
 }
-evenAvarage = (double)(evenSum / evenAmount);
-oddAvarage = (double)(oddSum / oddAmount);
+evenAvarage = (double)(evenSum) / (double)(evenAmount);
+oddAvarage = (double)(oddSum) / (double)(oddAmount);
 
-Console.WriteLine($"A páros számok átlaga{evenAvarage}\nA páratlan számok átlaga{oddAvarage}");
+Console.WriteLine($"A páros számok átlaga: {evenAvarage}\nA páratlan számok átlaga: {oddAvarage}");
