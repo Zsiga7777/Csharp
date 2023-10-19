@@ -22,11 +22,9 @@ while (!Isnumber || ender < starter);
 
 if (starter %2 ==0)
 {
-    for (int i = starter+1; i <= ender; i+=2)
-    { Console.WriteLine(i); }
+    starter++;
 }
-else
-{
-    for (int i = starter ; i <= ender; i += 2)
-    { Console.WriteLine(i); }
-}
+
+for (int i = starter; i <= ender; i+=2)
+{ Console.WriteLine(i); }
+

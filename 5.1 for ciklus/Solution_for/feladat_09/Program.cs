@@ -20,13 +20,9 @@ do
 }
 while (!Isnumber || ender < starter);
 
-if (starter % 2 == 0)
+if (ender % 2 != 0)
 {
+    ender--;
+}
     for (int i = ender; i >= starter; i -= 2)
     { Console.WriteLine(i); }
-}
-else
-{
-    for (int i = ender-1; i >= starter; i -= 2)
-    { Console.WriteLine(i); }
-}

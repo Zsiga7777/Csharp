@@ -22,18 +22,17 @@ do
 }
 while (!Isnumber || ender < starter);
 
-for (int i = starter; i <= ender; i++)
-{
-    if (counter)
-    {
-        sum += i;
-        counter = false;
-    }
-    else
-    { 
-        sum -= i;
-        counter = true;
-    }
-}
+//for (int i = starter; i <= ender; i++)
+//{
+//        sum += i * (counter ? 1 : (-1));
+//        counter = !counter;
+//}
 
-Console.WriteLine(sum);
+int valami = 1;
+for (int i = starter; i <= ender; i++)
+    {
+           sum += i * valami;
+           valami *= -1;
+    }
+
+    Console.WriteLine(sum);
