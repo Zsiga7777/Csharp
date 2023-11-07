@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "haromszog1", "haromszog1\haromszog1.csproj", "{8BFCD220-79EF-4B5F-9CB9-9C66AC7C547F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "haromszog1", "haromszog1\haromszog1.csproj", "{8BFCD220-79EF-4B5F-9CB9-9C66AC7C547F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "haromszog2", "haromszog2\haromszog2.csproj", "{61EE34C6-1297-4FF5-9DCF-24C2BE1628C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "haromszog2", "haromszog2\haromszog2.csproj", "{61EE34C6-1297-4FF5-9DCF-24C2BE1628C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "haromszog3", "haromszog3\haromszog3.csproj", "{C1264CF4-8447-4655-9704-902AD8237E25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "haromszog3", "haromszog3\haromszog3.csproj", "{C1264CF4-8447-4655-9704-902AD8237E25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "haz", "haz\haz.csproj", "{62CFC83D-A285-44C8-915E-95CE6CE8F516}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{C1264CF4-8447-4655-9704-902AD8237E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1264CF4-8447-4655-9704-902AD8237E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1264CF4-8447-4655-9704-902AD8237E25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62CFC83D-A285-44C8-915E-95CE6CE8F516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62CFC83D-A285-44C8-915E-95CE6CE8F516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62CFC83D-A285-44C8-915E-95CE6CE8F516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62CFC83D-A285-44C8-915E-95CE6CE8F516}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
