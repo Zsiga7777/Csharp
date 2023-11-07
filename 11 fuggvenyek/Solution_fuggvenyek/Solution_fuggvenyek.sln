@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34003.232
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feladat_00", "Feladat_00\Feladat_00.csproj", "{20B088C3-5164-42F4-88A2-974EC8586EB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOlibrary", "IOlibrary\IOlibrary.csproj", "{C0A50C37-55D5-4D85-8B73-D0C4B450671B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{20B088C3-5164-42F4-88A2-974EC8586EB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20B088C3-5164-42F4-88A2-974EC8586EB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20B088C3-5164-42F4-88A2-974EC8586EB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20B088C3-5164-42F4-88A2-974EC8586EB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0A50C37-55D5-4D85-8B73-D0C4B450671B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0A50C37-55D5-4D85-8B73-D0C4B450671B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0A50C37-55D5-4D85-8B73-D0C4B450671B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0A50C37-55D5-4D85-8B73-D0C4B450671B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6717CA32-14FA-43A9-8833-6AEDAFAF14B3}
+	EndGlobalSection
+EndGlobal
