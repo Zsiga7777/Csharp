@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feladat_00", "Feladat_00\Feladat_00.csproj", "{20B088C3-5164-42F4-88A2-974EC8586EB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Feladat_00", "Feladat_00\Feladat_00.csproj", "{20B088C3-5164-42F4-88A2-974EC8586EB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOlibrary", "IOlibrary\IOlibrary.csproj", "{C0A50C37-55D5-4D85-8B73-D0C4B450671B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IOlibrary", "IOlibrary\IOlibrary.csproj", "{C0A50C37-55D5-4D85-8B73-D0C4B450671B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feladat_01", "Feladat_01\Feladat_01.csproj", "{C1F5CD5E-638D-4A10-A39E-D46AC7A7DF35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feladat_03", "Feladat_03\Feladat_03.csproj", "{5982E2EC-9E69-4412-8F44-903FD0B44FF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feladat_06", "Feladat_06\Feladat_06.csproj", "{FDA68153-FA52-4864-BC40-B66D46CEDC5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{C0A50C37-55D5-4D85-8B73-D0C4B450671B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0A50C37-55D5-4D85-8B73-D0C4B450671B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0A50C37-55D5-4D85-8B73-D0C4B450671B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1F5CD5E-638D-4A10-A39E-D46AC7A7DF35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F5CD5E-638D-4A10-A39E-D46AC7A7DF35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F5CD5E-638D-4A10-A39E-D46AC7A7DF35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F5CD5E-638D-4A10-A39E-D46AC7A7DF35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5982E2EC-9E69-4412-8F44-903FD0B44FF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5982E2EC-9E69-4412-8F44-903FD0B44FF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5982E2EC-9E69-4412-8F44-903FD0B44FF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5982E2EC-9E69-4412-8F44-903FD0B44FF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDA68153-FA52-4864-BC40-B66D46CEDC5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDA68153-FA52-4864-BC40-B66D46CEDC5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDA68153-FA52-4864-BC40-B66D46CEDC5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDA68153-FA52-4864-BC40-B66D46CEDC5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

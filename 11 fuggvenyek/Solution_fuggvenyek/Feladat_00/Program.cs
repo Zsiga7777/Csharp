@@ -1,5 +1,4 @@
 ﻿using IOlibrary;
 
-Console.Write("Adjoh meg egy számot: ");
-int number = ExtendentConsole.ReadInteger();
+int number = ExtendentConsole.ReadInteger("Adjon meg egy számot: ");
 number.WrtiteToConsole();
