@@ -1,7 +1,7 @@
 ﻿
 using System.Transactions;
 
-namespace IOlibrary;
+namespace CustomLibrary;
 
 public static partial class MathExtensions
 {
@@ -9,5 +9,7 @@ public static partial class MathExtensions
     
 
     public static double CelsiusToFahrenheit(double celsius) => (9 / 5 * celsius) + 32;
+
+    public static double PythagoreanTheorem(double a, double b) => Math.Sqrt(Math.Pow((double)(a), 2) + Math.Pow((double)(b), 2));
     
 }

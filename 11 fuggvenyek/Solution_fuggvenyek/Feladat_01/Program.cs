@@ -1,13 +1,18 @@
 ﻿using IOlibrary;
-int szam1 = ExtendentConsole.ReadInteger("Kérek egy számot: ");
-int szam2 = ExtendentConsole.ReadInteger("Kérek egy másik számot: ");
+int number1 = ExtendentConsole.ReadInteger("Kérek egy számot: ");
+int number2 = ExtendentConsole.ReadInteger("Kérek egy másik számot: ");
+
+int resultSum = Sum(number1, number2);
+int resultSubtraction = Subtraction(number1, number2);
+int resultMultiplication = Multiply(number1, number2);
+double resultDivide = Divide(number1,number2);
 
 
-Console.WriteLine();
+Console.WriteLine($"{resultSum}; {resultSubtraction}; {resultMultiplication}; {resultDivide}") ;
 
-int Osszead(int szam1, int szam2) => szam1 + szam2;
+int Sum(int number1, int number2) => number1 + number2;
 
-int Kivon(int szam1, int szam2) => szam1 - szam2;
+int Subtraction(int number1, int number2) => number1 - number2;
 
-int Szoroz(int szam1, int szam2)  => szam1 * szam2;
-double Oszt(int szam1, int szam2) => szam1 / (double)(szam2);
+int Multiply(int number1, int number2)  => number1 * number2;
+double Divide(int number1, int number2) => number1 / (double)(number2);
