@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CustomLibrary\CustomLibrary.csproj" />
     <ProjectReference Include="..\IOlibrary\IOlibrary.csproj" />
   </ItemGroup>
 
