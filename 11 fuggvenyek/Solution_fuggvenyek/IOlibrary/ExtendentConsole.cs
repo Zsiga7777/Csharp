@@ -60,7 +60,22 @@
             return number;
         }
 
-        public static string ReadString(string promt)
+    public static double ReadDouble(double min,string promt)
+    {
+        bool isNumber = false;
+        double number = 0;
+        do
+        {
+            Console.Write($"{promt}");
+            string text = Console.ReadLine();
+            isNumber = double.TryParse(text, new CultureInfo("en-EN"), out number);
+        }
+        while (!isNumber || number < min);
+
+        return number;
+    }
+
+    public static string ReadString(string promt)
     {
         string text = string.Empty;
         do
