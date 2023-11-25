@@ -45,6 +45,23 @@
                 return number;
             }
 
+    public static int ReadInteger(int minimum, int maximum, string promt)
+    {
+        bool isNumber = false;
+        int number = 0;
+        do
+        {
+            Console.Write($"{promt}");
+            string text = Console.ReadLine();
+            isNumber = int.TryParse(text, out number);
+        }
+        while (!isNumber || number < minimum || number > maximum);
+
+        return number;
+    }
+
+
+
     public static double ReadDouble(string promt)
         {
             bool isNumber = false;
