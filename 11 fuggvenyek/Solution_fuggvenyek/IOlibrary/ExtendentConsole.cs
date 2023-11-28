@@ -92,6 +92,21 @@
         return number;
     }
 
+    public static double ReadDouble(double min,double max, string promt)
+    {
+        bool isNumber = false;
+        double number = 0;
+        do
+        {
+            Console.Write($"{promt}");
+            string text = Console.ReadLine();
+            isNumber = double.TryParse(text, new CultureInfo("en-EN"), out number);
+        }
+        while (!isNumber || number < min || number > max);
+
+        return number;
+    }
+
     public static string ReadString(string promt)
     {
         string text = string.Empty;
