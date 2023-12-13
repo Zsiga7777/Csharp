@@ -12,6 +12,10 @@ Console.WriteLine($"\n\nAll weekly expenses: {weeklyExpensesSum}");
 DailyExpense DayWithTheLeastExpense = GetDayWithTheLeastExpense(weeklyExpenses);
 Console.WriteLine($"\n\nDay with the least expense: {DayWithTheLeastExpense}");
 
+string expenseEqualWith10000 = GetExpensEqualWith(weeklyExpenses);
+Console.WriteLine($"\n\n{expenseEqualWith10000} 10000 FT-os kiadási érték");
+
+
 DailyExpense[] GetDailyExpenses()
 {
     DailyExpense[] expenses = new DailyExpense[7];
@@ -45,4 +49,22 @@ DailyExpense GetDayWithTheLeastExpense(DailyExpense[] expenses)
     DailyExpense DayWithTheLeastExpense = expenses.First(dailyExpense => dailyExpense.Expense == leastExpense);
 
     return DayWithTheLeastExpense;
+}
+
+string GetExpensEqualWith(DailyExpense[] expenses)
+{ 
+string result = string.Empty;
+
+    foreach (var expense in expenses)
+    {
+        if (expense.Expense == 10000)
+        {
+            result = "van";
+            break;
+        }
+        else {
+            result = "nincs";
+        }
+    }
+    return result;
 }
