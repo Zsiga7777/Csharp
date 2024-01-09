@@ -17,7 +17,7 @@
             return number;
         }
 
-        public static int ReadInteger(int maximum, string promt)
+        public static int ReadInteger(int minimum, string promt)
             {
                 bool isNumber = false;
                 int number = 0;
@@ -26,10 +26,10 @@
             Console.Write($"{promt}");
                     string text = Console.ReadLine();
                     isNumber = int.TryParse(text, out number);
-                    if(number > maximum)
+                    if(number < minimum)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"A megadott szám nem lehet nagyobb, mint {maximum}");
+                Console.WriteLine($"A megadott szám nem lehet kisebb, mint {minimum}");
 
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"A folytatáshoz nyomja meg bármely gombot!");
@@ -40,7 +40,7 @@
                 Console.ResetColor();
             }
                 }
-                while (!isNumber || number > maximum);
+                while (!isNumber || number < minimum);
 
                 return number;
             }
