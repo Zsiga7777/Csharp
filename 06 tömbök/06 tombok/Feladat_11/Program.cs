@@ -1,6 +1,6 @@
 ﻿using Custom.Library.ConsoleExtensions;
 
-const int NUMBEROFFRUITS = 10;
+const int NUMBEROFFRUITS = 3;
 
 Fruit[] fruits = GetFruits();
 
@@ -55,7 +55,7 @@ void WriteStockValues(Fruit[] fruits)
 {
     foreach (var fruit in fruits)
     {
-        Console.WriteLine($"A gyümölcs neve: {fruit.FruitName:F2}, a készlet értéke: {fruit.StockValue:F2} Ft");
+        Console.WriteLine($"A gyümölcs neve: {fruit.FruitName}, a készlet értéke: {fruit.StockValue:F2} Ft");
     }
 }
 
@@ -65,7 +65,7 @@ void WriteMostExpensiveFruit(Fruit[] fruits)
     {
     foreach (var fruit in fruits)
     {
-        Console.WriteLine($"A gyümölcs neve: {fruit.FruitName:F2}, az ára: {fruit.Price:F2} Ft");
+        Console.WriteLine($"A gyümölcs neve: {fruit.FruitName}, az ára: {fruit.Price:F2} Ft");
     }
 }
 Fruit[] SortFruitByAmount(Fruit[] fruits, double amount) => fruits.Where(fruit => fruit.Amount == amount).ToArray();
@@ -74,7 +74,7 @@ void WriteSmallestAmountFruit(Fruit[] fruits)
 {
     foreach (var fruit in fruits)
     {
-        Console.WriteLine($"A gyümölcs neve: {fruit.FruitName:F2}, a mennyisége: {fruit.Amount:F2} Kg");
+        Console.WriteLine($"A gyümölcs neve: {fruit.FruitName}, a mennyisége: {fruit.Amount:F2} Kg");
     }
 }
 

@@ -19,7 +19,7 @@ Player[] GetPlayers()
     for (int i = 0; i < NUMBEROFPLAYERS; i++)
     {
         name = ExtendentConsole.ReadString("Kérem a játékos nevét: ");
-        point = ExtendentConsole.ReadInteger(0, "Kérem a játékos nevét: ");
+        point = ExtendentConsole.ReadInteger(0, "Kérem a játékos által szerzett pontszámot: ");
         players[i] = new Player(name, point);
     }
 
