@@ -1,6 +1,6 @@
 ﻿using Custom.Library.ConsoleExtensions;
 
-const int NUMBEROFFRUITS = 10;
+const int NUMBEROFFRUITS = 3;
 
 Fruit[] fruits = GetFruits();
 
