@@ -1,6 +1,6 @@
 ﻿using Custom.Library.ConsoleExtensions;
 
-const int NUMBEROFPLAYERS = 3;
+const int NUMBEROFPLAYERS = 5;
 
 Player[] players = GetPlayers();
 
