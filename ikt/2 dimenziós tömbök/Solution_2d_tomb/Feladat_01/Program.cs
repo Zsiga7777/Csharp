@@ -1,13 +1,17 @@
 ﻿using Custom.Library.ConsoleExtensions;
+Random random = new Random();
 
 int squareSize = ExtendentConsole.ReadInteger(1,"Kérem a 2 dimenziós tömb nagyságát: ");
 
 int[,] matrix = GetMatrix();
 
+Console.Clear();
+
+WriteMatrix(matrix);
 
 // Első feladat
 int sumOfMainDiagonal = GetMainDiagonalSum(matrix);
-Console.WriteLine($"A főátló számainak összege: {sumOfMainDiagonal}");
+Console.WriteLine($"\nA főátló számainak összege: {sumOfMainDiagonal}");
 
 // Második feladat
 int[] secondaryDiagonalElements = GetSecondaryDiagonalElements(matrix);
@@ -23,29 +27,41 @@ Console.WriteLine("\nA főátló alatti elemek: ");
 WriteitemsBelowMainDiagonal(matrix);
 
 // Ötödik feladat
-int largestNumberBelowSecondaryDiagonal = matrix[squareSize-1, squareSize-1];
+int largestNumberBelowSecondaryDiagonal = GetLargestElementBelowSecondaryDiagonal(matrix);
 Console.WriteLine($"\nA legnagyob szám a mellékátló alatt: {largestNumberBelowSecondaryDiagonal}");
 
 // Hatodik feladat
-int smallestNumberAboveSecondaryDiagonal = matrix[0, 0];
-Console.WriteLine($"\nA legkisebb szám a mellékátló felett: {smallestNumberAboveSecondaryDiagonal}");
+int smallestNumberBelowSecondaryDiagonal = GetSmallestElementAboveSecondaryDiagonal(matrix);
+Console.WriteLine($"\nA legkisebb szám a mellékátló felett: {smallestNumberBelowSecondaryDiagonal} ");
 
 
 int[,] GetMatrix()
 {
     int[,] matrix = new int[squareSize, squareSize];
-    int szamlalo = 0;
+    int temp = 0;
 
     for (int i = 0; i < squareSize; i++)
     {
         for (int j = 0; j < squareSize; j++)
         {
-            szamlalo++;
-            matrix[i, j] = szamlalo;
+           temp = random.Next(500);
+            matrix[i, j] = temp;
         }
     }
 
     return matrix;
+}
+
+void WriteMatrix(int[,] matrix)
+{ 
+    for (int i = 0;i < squareSize; i++)
+    {
+        for(int j = 0;j < squareSize; j++)
+        {
+            Console.Write($"{matrix[i, j]}\t");
+        }
+        Console.WriteLine();
+    }
 }
 
 int GetMainDiagonalSum(int[,] matrix)
@@ -88,11 +104,11 @@ void WriteitemsAboveMainDiagonal(int[,] matrix)
     {
         for (int j = 0; j < i; j++)
         {
-            Console.Write("      ");
+            Console.Write("\t");
         }
         for (int k = i + 1; k < squareSize; k++)
         {
-            Console.Write($"[{i}, {k}]");
+            Console.Write($"{matrix[i,k]}\t");
         }
         Console.WriteLine();
     }
@@ -105,7 +121,7 @@ void WriteitemsBelowMainDiagonal(int[,] matrix)
         
         for (int j = 0; j < i; j++)
         {
-            Console.Write($"[{i}, {j}]");
+            Console.Write($"{matrix[i, j]}\t");
         }
         Console.WriteLine();
     }
@@ -117,4 +133,44 @@ void WriteArray(int[] array)
     {
         Console.Write($"{item}, ");
     }
+}
+
+int GetLargestElementBelowSecondaryDiagonal(int[,] matrix)
+{
+    int result = 0;
+    for (int i = 0; i < squareSize ; i++) 
+    { 
+        for (int j = squareSize-1; j > 0; j--)
+        {
+            if (j > (squareSize-i)) 
+            {
+                if (matrix[i, j] > result)
+                { 
+                    result = matrix[i,j];
+                }
+            }
+        }
+    }
+
+    return result;
+}
+
+int GetSmallestElementAboveSecondaryDiagonal(int[,] matrix)
+{
+    int result = matrix[0,0];
+    for (int i = 0; i < squareSize; i++)
+    {
+        for (int j = 0; j < squareSize; j++)
+        {
+            if (j < (squareSize - i))
+            {
+                if (matrix[i, j] < result)
+                {
+                    result = matrix[i, j];
+                }
+            }
+        }
+    }
+
+    return result;
 }
