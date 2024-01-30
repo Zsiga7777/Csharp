@@ -52,3 +52,10 @@ List<string> orderedStudentsByGrade = students.OrderByDescending(s => s.Grade)
                                               .ThenByDescending(s => s.Points)
                                               .Select(s => s.Name)
                                               .ToList();
+
+//évfolyamonként elért pontszámok, évfolyam szerint csökkenő sorrendben
+
+var valmai = students.GroupBy(s => s.Grade)
+                     .Select(group => new { classId = group.Key,
+                                     pointSum = group.Sum(s => s.Points)})
+                     .OrderByDescending(g => g.pointSum);
