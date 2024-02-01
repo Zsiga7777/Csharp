@@ -55,7 +55,28 @@ List<string> orderedStudentsByGrade = students.OrderByDescending(s => s.Grade)
 
 //évfolyamonként elért pontszámok, évfolyam szerint csökkenő sorrendben
 
-var valmai = students.GroupBy(s => s.Grade)
-                     .Select(group => new { classId = group.Key,
-                                     pointSum = group.Sum(s => s.Points)})
-                     .OrderByDescending(g => g.pointSum);
+/*var valmai = students.GroupBy(s => s.Grade)
+                     .Select(group => new { ClassId = group.Key,
+                                     PointSum = group.Sum(s => s.Points)})
+                     .OrderByDescending(g => g.PointSum);*/
+
+List<GradeWithPoints> gradeWithPoints = students.GroupBy(s =>s.Grade)
+                                                .Select(s => new GradeWithPoints
+                                                { 
+                                                    Grade = s.Key,
+                                                    SumPoints = s.Sum(s => s.Points)
+                                                })
+                                                .OrderByDescending(s => s.SumPoints)
+                                                .ToList();
+
+
+//milyen pontszamokat kaptak egyes évfolyamok
+//minden pontszám csak 1x fordulhat elő az eredményben
+
+List<int> distinctedPoints = students.Select(s => s.Points)
+                                     .Distinct()
+                                     .ToList();
+
+List<int> distinctedPoints2 = students.DistinctBy(s => s.Points)
+                                      .Select(s => s.Points)              
+                                     .ToList();
