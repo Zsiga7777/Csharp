@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.Text;
 
 public class Team
 { 
@@ -12,5 +13,19 @@ public class Team
         Name = teamName;
         PlayersName = playerName;
     }
-    }
+
+    /*public override string ToString()
+    {
+        StringBuilder sb= new StringBuilder();
+
+        sb.AppendLine(Name);
+
+        foreach (string player in PlayersName)
+        {
+            sb.AppendLine($"\t-{player}");
+        }
+
+        return sb.ToString();
+    }*/
+}
 

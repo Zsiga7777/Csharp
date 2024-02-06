@@ -100,6 +100,11 @@ namespace Feladat___01
                 Console.WriteLine();
             }
 
+            /*foreach (var item in playersByTeam)
+            {
+                Console.WriteLine(item);
+            }*/
+
         }
     }
 }
