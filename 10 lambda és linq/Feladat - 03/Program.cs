@@ -35,7 +35,7 @@ WriteToConsole("Data", motorcycles);
 int numberOfMotorcycles = motorcycles.Count;
 
 // 2 - Hány 'Honda' gyártmányú motorkerékpár van az 'adatbázisban' ?
-int numberOfHondas = motorcycles.Count(m => m.Brand == "Honda");
+int numberOfHondas = motorcycles.Count(m => m.Brand.ToLower() == "honda");
 
 // 3 - Mekkora a legnyaobb köbcenti az 'adatbázisban' ?
 int biggestCubicCentiMetre = motorcycles.Max(m => m.Cubic);
@@ -47,19 +47,19 @@ int smallestSpeed = motorcycles.Min( m => m.TopSpeed);
 bool motorMadeBefore1960 = motorcycles.Any(m => m.ReleaseYear < 1960);
 
 // 6 - Van-e 'Honda' gyártmányú motorkerképár az 'adatbázisban' melynek beceneve 'Hornet' ?
-bool hondaMotorWithNicknameHornet = motorcycles.Any(m => m.Nickname.ToLower() == "hornet" && m.Brand == "Honda");
+bool hondaMotorWithNicknameHornet = motorcycles.Any(m => m.Nickname.ToLower() == "hornet" && m.Brand.ToLower() == "honda");
 
 // 7 - Keressük ki a 'Yamaha' gyártmányú motorkerékpárokat!
-List<Motorcycle> motorsMadeByYamaha = motorcycles.Where(m => m.Brand == "Yamaha").ToList();
+List<Motorcycle> motorsMadeByYamaha = motorcycles.Where(m => m.Brand.ToLower() == "yamaha").ToList();
 
 // 8 -Keressük a 'Suzuki' gyártotmányú motorkerékpárokat melyek 600ccm felett vannak!
-List<Motorcycle> motorsMadeBySuzukiAndOver600ccm = motorcycles.Where(m => m.Brand == "Suzuki" && m.Cubic >600).ToList();
+List<Motorcycle> motorsMadeBySuzukiAndOver600ccm = motorcycles.Where(m => m.Brand.ToLower() == "suzuki" && m.Cubic >600).ToList();
 
 // 9 - Keressük ki a 'Kawasaki' gyártotmányú motorkerékpárokat, melyek sebesságe nagyobb min 150km/h!
-List<Motorcycle> motorsMadeByKawasakiAndSpeedOver150 = motorcycles.Where(m => m.Brand == "Kawasaki" && m.TopSpeed > 150).ToList();
+List<Motorcycle> motorsMadeByKawasakiAndSpeedOver150 = motorcycles.Where(m => m.Brand.ToLower() == "kawasaki" && m.TopSpeed > 150).ToList();
 
 // 10 - Keressük ki a 'BMW' gyártotmányú motorkerékpárokat, melyeket 2010 előtt gyárottak és a motor köbcentije minimum 1000!
-List<Motorcycle> motorsMadeByBMWAndBefor2010AndOver1000ccm = motorcycles.Where(m => m.Brand == "BMW" && 
+List<Motorcycle> motorsMadeByBMWAndBefor2010AndOver1000ccm = motorcycles.Where(m => m.Brand.ToLower() == "bmw" && 
                                                                         m.Cubic >=1000 && m.ReleaseYear < 2010).ToList();
 
 
@@ -82,11 +82,11 @@ Motorcycle lastMotor = motorcycles.Last();
 List<Motorcycle> orderdListByYear = motorcycles.OrderBy(m => m.ReleaseYear).ToList();
 
 // 18 - Rendezzük csökkenő sorrendbe a 'Honda' által gyártott motorkerékpárokat, melyek teljesítménye legalább 25kW és 2005 után gyártották őket.
-List<Motorcycle> orderedListOfHondas = motorcycles.Where(m => m.Brand == "Honda" && m.KW >=25 && m.ReleaseYear > 2005)
+List<Motorcycle> orderedListOfHondas = motorcycles.Where(m => m.Brand.ToLower() == "honda" && m.KW >=25 && m.ReleaseYear > 2005)
                                                    .OrderByDescending(m => m.KW).ToList();
 
 // 19 - Melyek azok a  motorkerékpárok, melyek nem rendelkeznek becenévvel?
-List<Motorcycle> motorsWithNicknames = motorcycles.Where(m => m.Nickname.Length > 1).ToList();
+List<Motorcycle> motorsWithNicknames = motorcycles.Where(m => m.Nickname.Length == 0).ToList();
 
 // 20 - Mekkora az 'adatbázisban' szereplő motorkerékpárok sebességének az átlaga?
 double averageSpeed = motorcycles.Average(m => m.TopSpeed);
@@ -113,7 +113,7 @@ List<MotorOrdered> motorOrdereds = motorcycles.Where(m => m.Brand.Length == 5)
                                                .Select(m => new MotorOrdered 
                                                {
                                                     MotorName = m.Nickname,
-                                                    ReleasYear = m.ReleaseYear,
+                                                    ReleasYear = m.ReleaseYear
                                                } )
                                                .ToList();
 
