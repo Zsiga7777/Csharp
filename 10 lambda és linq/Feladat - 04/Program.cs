@@ -103,6 +103,8 @@ bool anyFilmByTomCruise = movies.Any(m => m.Director?.ToLower() == "tom cruise")
 long? incomeOfLittleMissSunshine = movies.Where(m => m.Title?.ToLower() == "little miss sunshine")
                                        .Sum(m => m.USDVDSales + m.WorldwideGross + m.USGross);
 
+// long incomeOfLittleMissSunshine = movies.SingleOrDEfault(x => x.Title.ToLower() == "little miss sunshine")?.WorldwideGross ?? 0;
+
 
 // 15 - Hány olyan film van amely az IMDB-n 6 feletti osztályzatot ért el és a 'Rotten Tomatoes'-n pedig legalább 25-t?
 int numberOfFilmsWithHigherRating = movies.Where(m => m.IMDBRating > 6 && m.RottenTomatoesRating >= 25)
@@ -160,11 +162,13 @@ double averageBudgetOfUniversalFilms = movies.Where(m => m.Distributor?.ToLower(
                                                 .Average(m => m.ProductionBudget ?? 0);
 
 // 27 - Az 'IMDB Votes' alapján melyek azok a filmek, melyeket többen értékeltek min 30 000-n?
-List<Movie> moviesWithMoreThan30000Votes = movies.Where(m => m.IMDBVotes >= 30000).ToList();
+List<Movie> moviesWithMoreThan30000Votes = movies.Where(m => m.IMDBVotes > 30000).ToList();
 
 // 28 - Az 'American Pie' című filmnek hány része van?
 int numberOfEpisodesOfAmericanPie = movies.Where(m => m.Title != null)
                                           .Count(m => m.Title.ToLower().Contains("american pie"));
+
+// int numberOfEpisodesOfAmericanPie = movies.Count(m => m.Title?.ToLower().Contains("american pie") ?? false);
 
 // 29 - Van-e olyan film melynek a címében szerepel a 'fantasy' szó és a zsánere 'Adventure'?
 bool anyAventureFilmsWithfantasíInTitle = movies.Where(m => m.Title != null)
@@ -191,3 +195,9 @@ long spiderManMoviesIncomeInTheUSA = movies.Where(m => m.Title != null && m.Titl
 // 34 - Keresse ki  szuperhősös (Super Hero) filmek címeit.
 List<string> superHeroMoviesTitles = movies.Where(m => m.CreativeType?.ToLower() == "super hero")
                                             .Select (m => m.Title).ToList();
+
+// 35 - Kérje le az első 10 filmet
+List<Movie> first10Movies = movies.Take(10).ToList();
+
+// 36 - Kérje le a 30 és 40 közti filmeket a sorból, ahol a 30 és 40 indexek
+List<Movie> page3 = movies.Skip(30).Take(10).ToList();
