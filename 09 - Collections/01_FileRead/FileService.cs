@@ -26,6 +26,53 @@
         return students;
     }
 
+    public static async Task<List<Student>> ReadFromFileAsyncMethod2(string fileName)
+    {
+        List<Student> students = new List<Student>();
+        Student student = null;
+        string path = Path.Combine("source", fileName);
+
+        string temp = File.ReadAllText(path,Encoding.UTF8);
+
+        string[] splitted = temp.Split('\n');
+        string[] data = null;
+        
+        foreach (string line in splitted)
+        {
+            data = line.Split("\t");
+            data[1] = data[1].Replace('\t', ' ').TrimEnd();
+
+            student = new Student();
+            student.Name = data[0] ;
+            student.Average = double.Parse(data[1]);
+            students.Add(student);
+        }
+        
+        return students;
+    }
+
+    public static async Task<List<Student>> ReadFromFileAsyncMethod3(string fileName)
+    {
+        List<Student> students = new List<Student>();
+        Student student = null;
+        string path = Path.Combine("source", fileName);
+
+        string[] temp = File.ReadAllLines(path, Encoding.UTF8);
+
+        string[] data = null;
+
+        foreach (string line in temp)
+        {
+            data = line.Split("\t");
+
+            student = new Student();
+            student.Name = data[0];
+            student.Average = double.Parse(data[1]);
+            students.Add(student);
+        }
+
+        return students;
+    }
 
 }
 
