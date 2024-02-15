@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CustomLibrary\CustomLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="source\adatok.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
