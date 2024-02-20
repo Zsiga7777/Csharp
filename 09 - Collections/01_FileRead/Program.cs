@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _01_FileRead.Enums;
+using System;
 
 List<Student> students = await FileService.ReadFromFileAsyncMethod1("adatok.txt");
 
@@ -34,5 +35,26 @@ Console.WriteLine($"{(goodStudent ? "Van" : "Nincs")} kitűnő tanuló");
 //    - jeles, ha: 4.00 - 4.99
 //    - kitünő, ha: 5.00
 
-Dictionary<string,int> sumOfRatings =DataService.GetSumOfRatings(students) ;
-sumOfRatings.WriteCollectionToConsole();
+Dictionary<Grade, int> gradesCount = new Dictionary<Grade, int>()
+{
+    [Grade.Elegtelen] = students.Count(s => s.Grade == Grade.Elegtelen),
+    [Grade.Elegseges] = students.Count(s => s.Grade == Grade.Elegseges),
+    [Grade.Jo] = students.Count(s => s.Grade == Grade.Jo),
+    [Grade.Jeles] = students.Count(s => s.Grade == Grade.Jeles),
+    [Grade.Kituno] = students.Count(s => s.Grade == Grade.Kituno),
+
+};
+
+Dictionary<Grade, int> gradesCountV2 = new Dictionary<Grade, int>();
+foreach (Grade grade in Enum.GetValues<Grade>())
+{
+    gradesCountV2[grade] = students.Count(s => s.Grade == grade);
+}
+
+foreach (KeyValuePair<Grade, int> grade in gradesCountV2)
+{
+    Console.WriteLine($"{grade.Key} : {grade.Value} db");
+}
+
+//Dictionary<string,int> sumOfRatings =DataService.GetSumOfRatings(students) ;
+//.WrsumOfRatingsiteCollectionToConsole();
