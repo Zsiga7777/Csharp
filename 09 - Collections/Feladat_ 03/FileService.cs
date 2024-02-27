@@ -37,7 +37,7 @@
     #endregion
 
     #region output
-    public static async Task WriteToFileAsync(ICollection<Player> players, string filename)
+    public static async Task WriteToFileAsync<T>(ICollection<T> colection, string filename) where T: class
     {
         Directory.CreateDirectory("output");
         string path = Path.Combine("output", $"{filename}.txt");
@@ -45,67 +45,11 @@
         using FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None, 128);
         using StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
 
-        foreach (Player player in players)
+        foreach (T item in colection)
         {
-            await sw.WriteLineAsync($"{player}");
+            await sw.WriteLineAsync($"{item}");
         }
     }
-    public static async Task WriteToFileAsync(ICollection<Nationality> nationalities, string filename)
-    {
-        Directory.CreateDirectory("output");
-        string path = Path.Combine("output", $"{filename}.txt");
-
-        using FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None, 128);
-        using StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
-
-        foreach (Nationality nationality in nationalities)
-        {
-            await sw.WriteLineAsync($"{nationality}");
-        }
-    }
-
-    public static async Task WriteToFileAsync(ICollection<Team> teams, string filename)
-    {
-        Directory.CreateDirectory("output");
-        string path = Path.Combine("output", $"{filename}.txt");
-
-        using FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None, 128);
-        using StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
-
-        foreach (Team team in teams)
-        {
-            await sw.WriteLineAsync($"{team}");
-        }
-    }
-    public static async Task WriteToFileAsync(ICollection<PlayerNameAndHeight> players, string filename)
-    {
-        Directory.CreateDirectory("output");
-        string path = Path.Combine("output", $"{filename}.txt");
-
-        using FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None, 128);
-        using StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
-
-        foreach (PlayerNameAndHeight player in players)
-        {
-            await sw.WriteLineAsync($"{player}");
-        }
-    }
-
-    public static async Task WriteToFileAsync(ICollection<PlayerNameAndHeightWithDifferenceofTheAverage> players, string filename)
-    {
-        Directory.CreateDirectory("output");
-        string path = Path.Combine("output", $"{filename}.txt");
-
-        using FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None, 128);
-        using StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
-
-        foreach (PlayerNameAndHeightWithDifferenceofTheAverage player in players)
-        {
-            await sw.WriteLineAsync($"{player}");
-        }
-    }
-
-
     #endregion
 }
 

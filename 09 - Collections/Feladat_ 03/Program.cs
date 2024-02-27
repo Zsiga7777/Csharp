@@ -17,7 +17,7 @@ List<Team> teamsWithPlayersName = players.GroupBy(x => x.Team)
                                              PlayersName = x.Select(x => x.Name).ToList()
                                          }).ToList();
 
-await FileService.WriteToFileAsync(teamsWithPlayersName, "csapattagok");
+await FileService.WriteToFileAsync<Team>(teamsWithPlayersName, "csapattagok");
 
 
 //4 - Rendezzük a játékosokat magasság szerint növekvő sorrendbe és a magaslatok.txt állományba mentsük el.
@@ -31,7 +31,7 @@ List<Nationality> nationalitiesAndTheirPlayerCount = players.GroupBy(p => p.Nati
                                                                 Nationaily = p.Key,
                                                                 NumberOfPlayers = p.Count()
                                                             }).ToList();
-await FileService.WriteToFileAsync(nationalitiesAndTheirPlayerCount, "nemzetisegek");
+await FileService.WriteToFileAsync<Nationality>(nationalitiesAndTheirPlayerCount, "nemzetisegek");
 
 //6 - atlagnalmagasabbak.txt állományba keressük azon játékosok nevét és magasságát akik magasabbak mint az „adatbázisban” szereplő játékosok átlagos magasságánál.
 double averageHeight = players.Average(p => p.Height);
@@ -42,7 +42,7 @@ List<PlayerNameAndHeight> playerNameAndHeightsAboveAverageHeight = players.Where
                                                                             Height = p.Height
                                                                           })
                                                                           .ToList();
-await FileService.WriteToFileAsync(playerNameAndHeightsAboveAverageHeight, "atlagnalmagasabbak");
+await FileService.WriteToFileAsync<PlayerNameAndHeight>(playerNameAndHeightsAboveAverageHeight, "atlagnalmagasabbak");
 //7 - Állítsa növekvő sorrendbe a posztok szerint a játékosok ösz magasságát
 List<PostWithHeigth> postWithHeigths = players.GroupBy(p => p.Post)
                                               .Select(p => new PostWithHeigth
@@ -62,4 +62,4 @@ List<PlayerNameAndHeightWithDifferenceofTheAverage> playerNameAndHeightWithDiffe
                                                                                                                  Height = p.Height,
                                                                                                                  AverageHeight = averageHeight
                                                                                                              }).ToList();
-await FileService.WriteToFileAsync(playerNameAndHeightWithDifferenceofTheAverages, "alacsonyak");
+await FileService.WriteToFileAsync<PlayerNameAndHeightWithDifferenceofTheAverage>(playerNameAndHeightWithDifferenceofTheAverages, "alacsonyak");
