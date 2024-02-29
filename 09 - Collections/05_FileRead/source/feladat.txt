@@ -1,0 +1,16 @@
+Adva van az adatok.txt állományban a Magyar Női Röplabda Bajnogság csapatainak pontászámai a következő képpen:
+
+Békéscsaba
+1,2,1,3,3,3,3,3,3,3,1,2,2,1,3,3,1,3
+
+ahol a csapat nevét sortöréssel elválasztva követik a az elért pontok mérközésenként (max 18 lejátszott mérközés).
+
+- Hány csapat vett részt a bajnokságban?
+- Ki nyerte a bajnogságot?
+- Döntetlen mérkőzéskor a csapat 2 pontot szerez. Mutassa be csapatonként ki hány döntetlen mérkőzést játszott le!
+- Ha egy mérkőzés 5 szetben dől el, akkor a vesztes csapat 1 pontot szerez. Mely csapatok játszottak 5 szettes mérkőzést és hányat?
+- Ki a  bajnogság első három helyezete. Mutassa be mintának megfelelően:
+	helyezés - csapat neve		pontszám
+- Az elért pontok alapján, az utolsó három csapat kiesik az első osztályból. Kik ők?
+- Mutassa be csapatonként a győzelmi és verességi arányt csapatonként!
+- Mely csapatok győzelmi aránya van az átlag alatt?
