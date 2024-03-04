@@ -1,7 +1,7 @@
 ﻿using Custom.Library.ConsoleExtensions;
 Random random = new Random();
 
-int squareSize = ExtendentConsole.ReadInteger(1,"Kérem a 2 dimenziós tömb nagyságát: ");
+int squareSize = ExtendentConsole.ReadInteger(2,"Kérem a 2 dimenziós tömb nagyságát: ");
 
 int[,] matrix = GetMatrix();
 
@@ -142,7 +142,7 @@ int GetLargestElementBelowSecondaryDiagonal(int[,] matrix)
     { 
         for (int j = squareSize-1; j > 0; j--)
         {
-            if (j > (squareSize-i)) 
+            if (j > (squareSize-i-1)) 
             {
                 if (matrix[i, j] > result)
                 { 
@@ -162,7 +162,7 @@ int GetSmallestElementAboveSecondaryDiagonal(int[,] matrix)
     {
         for (int j = 0; j < squareSize; j++)
         {
-            if (j < (squareSize - i))
+            if (j < (squareSize - i-1))
             {
                 if (matrix[i, j] < result)
                 {

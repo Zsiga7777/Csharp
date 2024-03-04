@@ -54,7 +54,7 @@ void WriteWeatherData(double[,] data)
     for (int i = 0; i < NUMBEROFROWS; i++)
     {
          
-        for (int j = 0; j < NUMBEROFCOLUMNS; j++)
+        for (int j = 0; j < NUMBEROFCOLUMNS-1; j++)
         {
             Console.Write($"{data[i,j],-4} ");
         }
@@ -71,7 +71,7 @@ double[] OrderDailyAverageRain(double[,] data)
         results[i] = data[i,3];
     }
 
-    for (int i = 0;i < NUMBEROFCOLUMNS; i++)
+    for (int i = 0;i < NUMBEROFROWS; i++)
     {
         for (int j = i+1; j < NUMBEROFROWS; j++)
         {
