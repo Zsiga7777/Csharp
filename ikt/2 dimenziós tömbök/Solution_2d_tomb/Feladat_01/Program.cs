@@ -144,12 +144,14 @@ int GetLargestElementBelowSecondaryDiagonal(int[,] matrix)
         {
             if (j > (squareSize-i-1)) 
             {
+                Console.Write(matrix[i, j]);
                 if (matrix[i, j] > result)
                 { 
                     result = matrix[i,j];
                 }
             }
         }
+        Console.WriteLine();
     }
 
     return result;
