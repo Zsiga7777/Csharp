@@ -54,6 +54,10 @@
             Console.Write($"{promt}");
             string text = Console.ReadLine();
             isNumber = int.TryParse(text, out number);
+            if (number < minimum || number > maximum)
+            { 
+                Console.WriteLine($"Hibás számot adott meg, {minimum} és {maximum} közötti számot kell megadnia");
+            }
         }
         while (!isNumber || number < minimum || number > maximum);
 
