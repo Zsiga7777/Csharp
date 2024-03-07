@@ -1,2 +1,2 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿// 2-es feladat
+List<Player> players = await Fileservice.GetStudentsAsync("balkezesek.csv");
