@@ -3,7 +3,7 @@ public class Student
 {
     public string Name {  get; set; }
 
-    public ICollection<Subject> Subjects { get; set; }
+    public int StudentId { get; set; }
 
     public string Class { get; set; }
 
@@ -11,10 +11,10 @@ public class Student
 
     public Student() { }
 
-    public Student(string name, ICollection<Subject> subjects, string @class, string address)
+    public Student(string name, int studentId, string @class, string address)
     { 
     Name = name;
-        Subjects = subjects;
+        StudentId = studentId;
         Class = @class;
         Address = address;
     }

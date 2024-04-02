@@ -12,7 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="data\" />
+    <None Update="data\diakok.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="data\tantargyak.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
