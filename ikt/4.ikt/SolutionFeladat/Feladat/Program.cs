@@ -5,7 +5,7 @@ List<Student> students = await FileService.ReadFromFileAsync<Student>("diakok.js
 List<SubjectFolder> subjects = await FileService.ReadFromFileAsync<SubjectFolder>("tantargyak.json");
 
 
-var joinedStudentsDatas = from student in students
+var temp = from student in students
     join subject in subjects on student.StudentId equals subject.StudentId
     select new JoinedStudentData
     {   Name = student.Name,
@@ -16,57 +16,57 @@ var joinedStudentsDatas = from student in students
         
     };
 
-joinedStudentsDatas.Append(new JoinedStudentData { Name = "Béla", Address = "Orosháza", Class = "11.b", Id = 1, Subjects = new Dictionary<string, ICollection<int>> {
-    {"irodalom", new List<int> {1,2,3 } }
-} });
+List<JoinedStudentData> joinedStudentsDatas = temp.ToList();
+
 do
 {
    
-    Console.WriteLine("A rendszer lehetőségei:\n-liststudents\n-studentadd\n-studentmodify\n-studentdelete\n-subjectadd\n-subjectdelete\n-subjectmodify\n-markadd\n-markdelete\n-markmodify\n-endofwork");
+    Console.WriteLine("A rendszer lehetőségei:\n-list.students\n-students.add\n-students.modify\n-students.delete\n-subjects.add\n-subjectdelete\n-subjectmodify\n-markadd\n-markdelete\n-markmodify\n-endofwork");
     string input = ExtendentConsole.ReadString("\nKérem válasszon: ");
 
     switch (input)
     {
-        case "liststudents":
+        case "list.students":
             {
-                Console.WriteLine();
+
+                Console.Clear();
                 await DataService.WriteStudentNamesAsync(joinedStudentsDatas);
                 break;
             }
 
-        case "studentadd":
-            {   
-                Console.WriteLine();
-                joinedStudentsDatas = await DataService.AddNewStudentAsync(students.Count, joinedStudentsDatas);
+        case "students.add":
+            {
+                Console.Clear();
+                joinedStudentsDatas = await DataService.AddNewStudentsAsync(joinedStudentsDatas.Count, joinedStudentsDatas);
                 break;
             }
-        case "studentmodify":
+        case "students.modify":
             {
-                Console.WriteLine();
-                await DataService.ModifyStudentDataAsync(joinedStudentsDatas);
+                Console.Clear();
+                joinedStudentsDatas = await DataService.ModifyStudentsDataAsync(joinedStudentsDatas);
                 break;
             }
-        case "studentdelete":
+        case "students.delete":
             {
-                Console.WriteLine();
-                await DataService.DeleteStudentDataAsync(joinedStudentsDatas);
+                Console.Clear();
+                joinedStudentsDatas = await DataService.DeleteStudentsDataAsync(joinedStudentsDatas);
                 break;
             }
-        case "subjectadd":
+        case "subjects.add":
             {
-                Console.WriteLine();
-                await DataService.AddNewSubjectAsync(students, subjects);
+                Console.Clear();
+                joinedStudentsDatas = await DataService.AddNewSubjectsToExistingStudentsAsync(joinedStudentsDatas);
                 break;
             }
         case "subjectdelete":
             {
-                Console.WriteLine();
+                Console.Clear();
                 await DataService.DeleteSubjectAsync(students, subjects);
                 break;
             }
         case "subjectmodify":
             {
-                Console.WriteLine() ;
+                Console.Clear();
                 await DataService.ModifySubjectAsync(students, subjects);
                 break;
             }
