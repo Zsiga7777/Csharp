@@ -1,17 +1,15 @@
-﻿
-using Custom.Library.ConsoleExtensions;
-using System.Collections.Generic;
-using System.Xml.Linq;
+﻿using Custom.Library.ConsoleExtensions;
 
 public static class DataService
 {
+    #region student
     public static async Task<List<JoinedStudentData>> AddNewStudentsAsync(int newID, List<JoinedStudentData> joinedStudentDatas)
     {
         bool nomore = false;
         do
         {
             Console.Clear();
-            string input = ExtendentConsole.ReadString("Kérem a tanuló nevét vagy a feladat végeztével a nomore utasítást: ").Trim();
+            string input = ExtendentConsole.ReadString("Kérem a tanuló nevét vagy a feladat végeztével a nomore utasítást: ");
             if (input == "nomore") { break; }
 
             int counter = 0;
@@ -39,8 +37,6 @@ public static class DataService
 
     public static async Task<List<JoinedStudentData>> ModifyStudentsDataAsync(List<JoinedStudentData> joinedStudentDatas)
     {
-        bool nomore = false;
-        string temp = "";
         int iterationCounter = 0;
         do
         {
@@ -48,22 +44,14 @@ public static class DataService
             
             if (iterationCounter > 0)
             {
-                temp = ExtendentConsole.ReadString("Kívánja folytatni? Amennyiben nem, írja be a nomore parancsot, ellenkező esetben nyomjon entert: ");
-                if (temp.ToLower() == "nomore") { break; }
+                if(await AskIfWantTocontinueAsync()) { break; }
             }
-            Console.WriteLine("\nA tanulók nevei: ");
-            await WriteStudentNamesAsync(joinedStudentDatas);
-            string studentNeedsModify = null;
 
-            do
-            {
-                studentNeedsModify = ExtendentConsole.ReadString("Kérem a módosítani kívánt tanuló nevét: ").Trim();
-            }
-            while (!joinedStudentDatas.Any(x => x.Name == studentNeedsModify));
-
+            string studentNeedsModify = await GetStudentNameAsync(joinedStudentDatas, "Kérem a módosítani kívánt tanuló nevét: ");
+            
             Console.WriteLine("1:Név módosítás\n2:Osztály módosítás\n3:lakcím módosítás");
             int modificítionType = ExtendentConsole.ReadInteger(1, 3, "Kérem a módosítandó adat számát:");
-            string newData = ExtendentConsole.ReadString("Kérem az új adatot: ").Trim();
+            string newData = ExtendentConsole.ReadString("Kérem az új adatot: ");
             switch (modificítionType)
             {
                 case 1:
@@ -88,39 +76,31 @@ public static class DataService
                         joinedStudentDatas.First(x => x.Name == studentNeedsModify).Address = newData; break;
                     }
             }
-        } while (!nomore);
-        iterationCounter++;
+            iterationCounter++;
+        } while (true);
+        
         return joinedStudentDatas;
     }
     public static async Task<List<JoinedStudentData>> DeleteStudentsDataAsync(List<JoinedStudentData> joinedStudentDatas)
     {
-        bool nomore = false;
-        string temp = "";
         int iterationCounter = 0;
         do
         {
             Console.Clear();
             if (iterationCounter > 0)
             {
-                temp = ExtendentConsole.ReadString("Kívánja folytatni? Amennyiben nem, írja be a nomore parancsot, ellenkező esetben nyomjon entert: ");
-                if (temp.ToLower() == "nomore") { break; }
+                if( await AskIfWantTocontinueAsync()) { break; }
             }
-            Console.WriteLine("\nA tanulók nevei: ");
-            await WriteStudentNamesAsync(joinedStudentDatas);
-            string studentNeedsDelete = null;
-
-            do
-            {
-                studentNeedsDelete = ExtendentConsole.ReadString("Kérem a törölni kívánt tanuló nevét: ").Trim();
-            }
-            while (!joinedStudentDatas.Any(x => x.Name == studentNeedsDelete));
+            string studentNeedsDelete = await GetStudentNameAsync(joinedStudentDatas, "Kérem a törölni kívánt tanuló nevét: ");
 
             joinedStudentDatas = joinedStudentDatas.Except(joinedStudentDatas.Where(x => x.Name == studentNeedsDelete)).ToList();
             iterationCounter++;
-        } while (!nomore);
+        } while (true);
         return joinedStudentDatas;
     }
+    #endregion
 
+    #region subject
     public static async Task<Dictionary<string, ICollection<int>>> AddNewSubjectsAsync(Dictionary<string, ICollection<int>> subjects)
     {
 
@@ -130,7 +110,8 @@ public static class DataService
         int markInput = 0;
         do
         {
-            input = ExtendentConsole.ReadString("Kérem a tantárgy nevét vagy a feladat végesztével a 'nomore' utasítást: ").ToLower().Trim();
+            await WriteExistingSubjectNamesAsync(subjects);
+            input = ExtendentConsole.ReadString("Kérem a tantárgy nevét vagy a feladat végesztével a 'nomore' utasítást: ").ToLower();
             if (input != "nomore")
             {
                 if (!subjects.ContainsKey(input))
@@ -165,118 +146,111 @@ public static class DataService
 
     public static async Task<List<JoinedStudentData>> AddNewSubjectsToExistingStudentsAsync(List<JoinedStudentData> joinedStudentDatas)
     {
-        bool nomore = false;
-        string iterationTemp = "";
         int iterationCounter = 0;
         do
         {
 
             if (iterationCounter > 0)
             {
-                iterationTemp = ExtendentConsole.ReadString("Kívánja folytatni? Amennyiben nem, írja be a nomore parancsot, ellenkező esetben nyomjon entert: ");
-                if (iterationTemp.ToLower() == "nomore") { break; }
+                if( await AskIfWantTocontinueAsync())
+                 { break; }
             }
 
-            Console.WriteLine("\n tanulók nevei: ");
-            joinedStudentDatas.WriteCollectionToConsole();
-            string studentNeedsToAddSubject = null;
+           string studentNeedsToAddSubject = await GetStudentNameAsync(joinedStudentDatas, "Kérem a tanuló nevét, akinek új tantárgyat kell hozzáadni: ");         
 
-            do
-            {
-                studentNeedsToAddSubject = ExtendentConsole.ReadString("Kérem a tanuló nevét, akinek új tantárgyat kell hozzáadni: ").Trim();
-            }
-            while (!joinedStudentDatas.Any(x => x.Name == studentNeedsToAddSubject));
+            joinedStudentDatas.First(x => x.Name == studentNeedsToAddSubject).Subjects = await AddNewSubjectsAsync(joinedStudentDatas.First(x => x.Name == studentNeedsToAddSubject).Subjects);
 
-            Dictionary<string, ICollection<int>> temp = await AddNewSubjectsAsync(joinedStudentDatas.First(x => x.Name == studentNeedsToAddSubject).Subjects);
-
-            joinedStudentDatas.First(x => x.Name == studentNeedsToAddSubject).Subjects = temp;
             iterationCounter++;
-        }while (!nomore);
+        }while (true);
         return joinedStudentDatas;
 
     }
 
-    public static async Task<List<SubjectFolder>> DeleteSubjectAsync(List<Student> students, List<SubjectFolder> subjectFolders)
+    public static async Task<List<JoinedStudentData>> DeleteSubjectsAsync(List<JoinedStudentData> joinedStudentDatas)
     {
-        Console.WriteLine("\n tanulók nevei: ");
-        students.WriteCollectionToConsole();
-        string studentNeedsToAddSubject = null;
-
+        int iterationCounter = 0;
         do
         {
-            studentNeedsToAddSubject = ExtendentConsole.ReadString("Kérem a tanuló nevét, akinek új tantárgyat kell hozzáadni: ").Trim();
-        }
-        while (!students.Any(x => x.Name == studentNeedsToAddSubject));
-
-        int studentId = students.First(x => x.Name == studentNeedsToAddSubject).StudentId;
-
-        SubjectFolder subjectFolder = subjectFolders.First(x => x.StudentId == studentId);
-
-        int indexOfThisFolder = subjectFolders.IndexOf(subjectFolder);
-
-        bool moreMark = false;
-        string input = null;
-        int markInput = 0;
-
-        do
-        {
-            input = ExtendentConsole.ReadString("Kérem a törlendő tantárgy nevét: ").ToLower().Trim();
-            if (subjectFolder.Subjects.ContainsKey(input))
+            Console.Clear();
+            if (iterationCounter > 0)
             {
-                subjectFolder.Subjects.Remove(input);
-               
-                break;
+                if (await AskIfWantTocontinueAsync())
+                { break; }
             }
+           string studentNeedsToDeleteSubject = await GetStudentNameAsync(joinedStudentDatas,"Kérem a tanuló nevét, akinek tantárgyat kell törölni: ");
+
+            Dictionary<string, ICollection<int>> subjectFolder = joinedStudentDatas.First(x => x.Name == studentNeedsToDeleteSubject).Subjects;
+            string input = null;
+            do
+            {
+                await WriteExistingSubjectNamesAsync(subjectFolder);
+                input = ExtendentConsole.ReadString("Kérem a törlendő tantárgy nevét: ").ToLower();
+                if (subjectFolder.ContainsKey(input))
+                {
+                    subjectFolder.Remove(input);
+                    break;
+                }
 
 
-        }
-        while (!subjectFolder.Subjects.ContainsKey(input));
+            }
+            while (!subjectFolder.ContainsKey(input));
 
-        subjectFolders[indexOfThisFolder] = subjectFolder;
+            joinedStudentDatas.First(x => x.Name == studentNeedsToDeleteSubject).Subjects = subjectFolder;
+            iterationCounter++;
+        } while (true);
 
-        return subjectFolders;
+        return joinedStudentDatas;
     }
 
-    public static async Task<List<SubjectFolder>> ModifySubjectAsync(List<Student> students, List<SubjectFolder> subjectFolders)
+    public static async Task<List<JoinedStudentData>> ModifySubjectAsync(List<JoinedStudentData> joinedStudentDatas)
     {
-        Console.WriteLine("\n tanulók nevei: ");
-        students.WriteCollectionToConsole();
-        string studentNeedsToAddSubject = null;
+        int counter = 0;
 
         do
         {
-            studentNeedsToAddSubject = ExtendentConsole.ReadString("Kérem a tanuló nevét, akinek módosítani kella  tantárgyát: ").Trim();
-        }
-        while (!students.Any(x => x.Name == studentNeedsToAddSubject));
+            Console.Clear();
 
-        int studentId = students.First(x => x.Name == studentNeedsToAddSubject).StudentId;
-
-        SubjectFolder subjectFolder = subjectFolders.First(x => x.StudentId == studentId);
-
-        int indexOfThisFolder = subjectFolders.IndexOf(subjectFolder);
-
-        string input = null;
-
-        do
-        {
-            input = ExtendentConsole.ReadString("Kérem a módosítandó tantárgy nevét: ").ToLower().Trim();
-            if (subjectFolder.Subjects.ContainsKey(input))
+            if (counter > 0)
             {
-                List<int> temp = subjectFolder.Subjects[input].ToList();
-               subjectFolder.Subjects.Remove(input);
-                subjectFolder.Subjects.Add(ExtendentConsole.ReadString("Kérem a tantárgy módosított nevét: ").ToLower().Trim(), temp);
-                break;
+                if (await AskIfWantTocontinueAsync())
+                { break; }
             }
 
+            Console.WriteLine("\n tanulók nevei: ");
+            await WriteStudentNamesAsync(joinedStudentDatas);
+            string studentNeedsToModifySubject = null;
 
-        }
-        while (!subjectFolder.Subjects.ContainsKey(input));
+            do
+            {
+                studentNeedsToModifySubject = ExtendentConsole.ReadString("Kérem a tanuló nevét, akinek módosítani kell a tantárgyát: ");
+            }
+            while (!joinedStudentDatas.Any(x => x.Name == studentNeedsToModifySubject));
 
-        subjectFolders[indexOfThisFolder] = subjectFolder;
+            Dictionary<string, ICollection<int>> subjectFolder = joinedStudentDatas.First(x => x.Name == studentNeedsToModifySubject).Subjects;
 
-        return subjectFolders;
+            string input = null;
+
+            do
+            {
+                await WriteExistingSubjectNamesAsync(subjectFolder);
+                input = ExtendentConsole.ReadString("Kérem a módosítandó tantárgy nevét: ").ToLower();
+                if (subjectFolder.ContainsKey(input))
+                {
+                    List<int> temp = subjectFolder[input].ToList();
+                    subjectFolder.Remove(input);
+                    subjectFolder.Add(ExtendentConsole.ReadString("Kérem a tantárgy módosított nevét: ").ToLower(), temp);
+                    break;
+                }
+            }
+            while (!subjectFolder.ContainsKey(input));
+
+            joinedStudentDatas.First(x => x.Name == studentNeedsToModifySubject).Subjects = subjectFolder;
+        } while (true);
+        return joinedStudentDatas;
     }
+    #endregion
 
+    #region anythingElse
     public static async Task WriteStudentNamesAsync(IEnumerable<JoinedStudentData> joinedStudentDatas)
     {
         foreach (var joinedStudentData in joinedStudentDatas)
@@ -284,5 +258,46 @@ public static class DataService
             Console.WriteLine($"-{joinedStudentData.Name}");
         }
     }
-}
 
+    public static async Task WriteStudentDataAsync(List<JoinedStudentData> joinedStudentDatas)
+    {
+        string studentName = await GetStudentNameAsync(joinedStudentDatas, "Kérem a kiirandó tanuló nevét: ");
+        Console.WriteLine(joinedStudentDatas.First(x => x.Name == studentName));
+    }
+
+    public static async Task WriteExistingSubjectNamesAsync(Dictionary<string, ICollection<int>> subjects)
+    {
+        Console.WriteLine($"\nJelenlegi tantárgyak: ");
+        foreach (var subject in subjects)
+        {
+            Console.WriteLine($"- {subject.Key}");
+        }
+    }
+
+    public static async Task<bool> AskIfWantTocontinueAsync()
+    {
+        bool nomore = false;
+        string iterationTemp = "";
+        iterationTemp = ExtendentConsole.ReadString("Kívánja folytatni? Amennyiben nem, írja be a nomore parancsot, ellenkező esetben nyomjon entert: ");
+        if (iterationTemp.ToLower() == "nomore")
+        { 
+            nomore = true;
+        }
+        return nomore;
+    }
+
+    public static async Task<string> GetStudentNameAsync(List<JoinedStudentData> joinedStudentDatas, string prompt)
+    {
+        Console.WriteLine("\nA tanulók nevei: ");
+        await WriteStudentNamesAsync(joinedStudentDatas);
+        string studentName = null;
+
+        do
+        {
+            studentName = ExtendentConsole.ReadString($"{prompt}");
+        }
+        while (!joinedStudentDatas.Any(x => x.Name == studentName));
+        return studentName;
+    }
+    #endregion
+}

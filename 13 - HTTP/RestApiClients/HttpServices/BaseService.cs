@@ -1,6 +1,6 @@
 ﻿namespace HttpServices;
 
-public static class BaseService
+public class BaseService
 {
     private static HttpClient httpClient;
     private static JsonSerializerOptions options;
@@ -76,12 +76,21 @@ public static class BaseService
     /// <param name="routParam">Rout parameter</param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public static async Task SendDeleteRequestAsync(string route, object routParam)
+    public static async Task<bool> SendDeleteRequestAsync(string route, object routParam)
     {
-        var uri = BuildUri(route, routParam);
+        try
+        {
+            var uri = BuildUri(route, routParam);
 
-        var response = await httpClient.DeleteAsync(uri);
-        response.EnsureSuccessStatusCode();
+            var response = await httpClient.DeleteAsync(uri);
+            response.EnsureSuccessStatusCode();
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
     }
 
     /// <summary>
