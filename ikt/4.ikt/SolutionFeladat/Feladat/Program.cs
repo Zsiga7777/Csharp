@@ -21,19 +21,19 @@ List<JoinedStudentData> joinedStudentsDatas = temp.ToList();
 do
 {
    
-    Console.WriteLine("A rendszer lehetőségei:\n-write.student\n-list.students\n-students.add\n-students.modify\n-students.delete" +
-        "\n-subjects.add\n-subjects.delete\n-subjects.modify\n-markadd\n-markdelete\n-markmodify\n-endofwork");
-    string input = ExtendentConsole.ReadString("\nKérem válasszon: ");
+    Console.WriteLine("A rendszer lehetőségei:\n1 - write student data\n2 - list students\n3 - add students\n4 - modify students\n5 - delete students" +
+        "\n6 - add subjects\n7 - delete subjects\n8 - modify subjects\n9 - add mark\n10 - delete mark\n11 - modify mark\n12 - save and exit");
+    int input = ExtendentConsole.ReadInteger(1,12,"\nKérem válasszon: ");
 
     switch (input)
     {
-        case "write.student":
+        case 1:
             { 
                 Console.Clear(); 
                 await DataService.WriteStudentDataAsync(joinedStudentsDatas);
                 break;
             }
-        case "list.students":
+        case 2:
             {
 
                 Console.Clear();
@@ -41,51 +41,63 @@ do
                 break;
             }
 
-        case "students.add":
+        case 3:
             {
                 Console.Clear();
-                joinedStudentsDatas = await DataService.AddNewStudentsAsync(joinedStudentsDatas.Count, joinedStudentsDatas);
+                await DataService.AddNewStudentsAsync(joinedStudentsDatas.Count, joinedStudentsDatas);
                 break;
             }
-        case "students.modify":
+        case 4:
             {
                 Console.Clear();
-                joinedStudentsDatas = await DataService.ModifyStudentsDataAsync(joinedStudentsDatas);
+                await DataService.ModifyStudentsDataAsync(joinedStudentsDatas);
                 break;
             }
-        case "students.delete":
+        case 5:
             {
                 Console.Clear();
-                joinedStudentsDatas = await DataService.DeleteStudentsDataAsync(joinedStudentsDatas);
+                await DataService.DeleteStudentsDataAsync(joinedStudentsDatas);
                 break;
             }
-        case "subjects.add":
+        case 6:
             {
                 Console.Clear();
-                joinedStudentsDatas = await DataService.AddNewSubjectsToExistingStudentsAsync(joinedStudentsDatas);
+                await DataService.AddNewSubjectsToExistingStudentsAsync(joinedStudentsDatas);
                 break;
             }
-        case "subjects.delete":
+        case 7:
             {
                 Console.Clear();
                 await DataService.DeleteSubjectsAsync(joinedStudentsDatas);
                 break;
             }
-        case "subjects.modify":
+        case 8:
             {
                 Console.Clear();
                 await DataService.ModifySubjectAsync(joinedStudentsDatas);
                 break;
             }
-        case "endofwork":
+        case 9:
             {
-                endOfWork = true;
+                Console.Clear();
+                await DataService.AddNewMarkAsnyc(joinedStudentsDatas);
                 break;
             }
-        default:
+        case 10:
             {
-                Console.WriteLine();
-                Console.WriteLine("Nem adott meg megfelelő parancsot.");
+                Console.Clear();
+                await DataService.DeleteMarkAsync(joinedStudentsDatas);
+                break;
+            }
+        case 11:
+            {
+                Console.Clear();
+                await DataService.ModifyMarkAsync(joinedStudentsDatas);
+                break;
+            }
+        case 12:
+            {
+                endOfWork = true;
                 break;
             }
     }

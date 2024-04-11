@@ -6,7 +6,7 @@
         public int Id { get; set; }
 
         [JsonPropertyName("price")]
-        public int Price { get; set; }
+        public string Price { get; set; }
 
         [JsonPropertyName("name")]
         public string Name { get; set; }

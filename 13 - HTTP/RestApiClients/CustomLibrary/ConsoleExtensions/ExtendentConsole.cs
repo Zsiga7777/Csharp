@@ -125,5 +125,19 @@
         return text;
     }
 
+    public static char ReadChar(string promt, ICollection<char> chars)
+    {
+        char letter;
+        do
+        {
+            Console.Write($"{promt}");
+            letter = Console.ReadKey().KeyChar;
+
+        }
+        while (!chars.Contains(letter));
+
+        return letter;
+    }
+
 }
 
