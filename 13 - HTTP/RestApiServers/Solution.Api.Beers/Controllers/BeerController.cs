@@ -17,6 +17,17 @@ public partial class BeerController(IBeerService<Beer, int> service) : Controlle
     }
 
     [HttpGet]
+    [Route("/api/beer/get-five/{pageNumber}")]
+    [SwaggerOperation(OperationId = "getFive")]
+    [Produces("application/json")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(List<Beer>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    public async Task<IActionResult> GetFiveRecords([Required]int pageNumber)
+    {
+        return Ok(await Task.FromResult(service.GetFiveRecords(pageNumber)));
+    }
+
+    [HttpGet]
     [Route("/api/beer/get/{id}")]
     [SwaggerOperation(OperationId = "get")]
     [Produces("application/json")]

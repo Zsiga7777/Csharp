@@ -14,6 +14,7 @@ public abstract class BaseService<T, TKey> : IBaseService<T, TKey> where T : cla
 
     public abstract void Update(T model);
 
+    public abstract IDictionary<int, ICollection<T>> GetFiveRecords(int pageNumber);
     protected List<T> ReadDataFromJson(string fileName)
     {
         try

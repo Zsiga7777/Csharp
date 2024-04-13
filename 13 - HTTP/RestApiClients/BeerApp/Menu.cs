@@ -1,4 +1,5 @@
 ﻿using Models;
+using System.Diagnostics.Metrics;
 using System.Runtime.InteropServices;
 
 namespace BeerApp
@@ -7,8 +8,8 @@ namespace BeerApp
     {
         public static async Task StartingPage()
         {
-            Console.WriteLine("1 - új sör hozzáadása \n2 - jelenlegi sör módosítása\n3 - összes sör megtekintése");
-            int enteredNumber = ExtendentConsole.ReadInteger(1, 3, "Kérem, válasszon: ");
+            Console.WriteLine("1 - új sör hozzáadása \n2 - jelenlegi sör módosítása\n3 - összes sör megtekintése(kliens)\n4 - összes sör megtekintése(szerver)");
+            int enteredNumber = ExtendentConsole.ReadInteger(1, 4, "Kérem, válasszon: ");
 
             switch (enteredNumber)
             {
@@ -21,6 +22,9 @@ namespace BeerApp
                     break;
                 case 3:
                     await ListAllBeers();
+                    break;
+                case 4:
+                    await ListFiveBeersAsnyc();
                     break;
 
             }
@@ -45,11 +49,11 @@ namespace BeerApp
 
                 await UpdateOrDelete();
             }
-            
+
         }
 
         public static async Task UpdateOrDelete()
-        { 
+        {
             Console.Clear();
 
             Beer beer = AppState.GetBeer();
@@ -60,7 +64,7 @@ namespace BeerApp
             Console.WriteLine("2 - Szerkesztés");
             int option = ExtendentConsole.ReadInteger(1, 2, "Válaszzon műveletet: ");
             switch (option)
-                {
+            {
                 case 1:
                     {
                         await DeleteAsync();
@@ -98,7 +102,7 @@ namespace BeerApp
             Console.Clear();
 
             Beer updatedBeerData = GetUpdatedBeerData();
-            
+
 
             await BeerService.SendPutRequestAsync("api/beer/update", updatedBeerData);
 
@@ -118,7 +122,7 @@ namespace BeerApp
             Console.Write("Kep (Ha nem szeretne megvaltoztatni nyomjon egy enter gombot): ");
             beer.Image = Console.ReadLine();
 
-            double price = ExtendentConsole.ReadDouble(0,"Ár (Ha nem szeretne megvaltoztatni nyomjon egy enter gombot): ");
+            double price = ExtendentConsole.ReadDouble(0, "Ár (Ha nem szeretne megvaltoztatni nyomjon egy enter gombot): ");
             beer.Price = $"${price}";
 
             AppState.Update(beer);
@@ -138,7 +142,7 @@ namespace BeerApp
             int reviews = ExtendentConsole.ReadInteger(0, "Kérem az értékelések számát: ");
             beer.Rating = new Rating { Average = average, Reviews = reviews };
 
-            bool result =await BeerService.SendPostRequestAsync("api/beer/create", beer);
+            bool result = await BeerService.SendPostRequestAsync("api/beer/create", beer);
             return result;
         }
 
@@ -151,7 +155,7 @@ namespace BeerApp
             Console.Clear();
             await Write5Beers(beers, idCounter);
             do
-            { 
+            {
                 if (idCounter <= 0)
                 {
                     char direction = ExtendentConsole.ReadChar("E(exit), F(forward)", ['e', 'E', 'f', 'F']);
@@ -166,7 +170,7 @@ namespace BeerApp
                         await Write5Beers(beers, idCounter);
                     }
                 }
-                else if (idCounter >= 5 && idCounter < beers.Count-6)
+                else if (idCounter >= 5 && idCounter < beers.Count - 6)
                 {
                     char direction = ExtendentConsole.ReadChar("B(backwards), E(exit), F(forward)", ['b', 'B', 'e', 'E', 'f', 'F']);
                     Console.Clear();
@@ -186,7 +190,7 @@ namespace BeerApp
                         await Write5Beers(beers, idCounter);
                     }
                 }
-                else if (idCounter >= beers.Count-6)
+                else if (idCounter >= beers.Count - 6)
                 {
                     char direction = ExtendentConsole.ReadChar(" B(Backward), E(exit)", ['b', 'B', 'e', 'E']);
                     Console.Clear();
@@ -209,7 +213,7 @@ namespace BeerApp
         {
             int endId = id + 4;
             if (beers.Count - 1 <= endId)
-            { 
+            {
                 endId = beers.Count - 1;
             }
             for (int i = id; i <= endId; i++)
@@ -217,7 +221,45 @@ namespace BeerApp
                 Console.WriteLine(beers[i]);
             }
         }
+
+        private static async Task ListFiveBeersAsnyc()
+        {
+            Dictionary<int, List<Beer>> beers = await BeerService.SendGetRequestAsync<Dictionary<int, List<Beer>>>("api/beer/get-five", 0);
+            int pageNumber = 0;
+            do
+            {
+                pageNumber = beers.Keys.First();
+                char direction = ExtendentConsole.ReadChar("B(backwards), E(exit), F(forward)", ['b', 'B', 'e', 'E', 'f', 'F']);
+                Console.Clear();
+                if (direction == 'e' || direction == 'E')
+                {
+                    return;
+                }
+                else if (direction == 'b' || direction == 'B')
+                {
+                    pageNumber--;
+                    beers = await BeerService.SendGetRequestAsync<Dictionary<int, List<Beer>>>("api/beer/get-five", pageNumber);
+                    
+                }
+                else
+                {
+                    pageNumber++;
+                    beers = await BeerService.SendGetRequestAsync<Dictionary<int, List<Beer>>>("api/beer/get-five", pageNumber);
+                }
+                await Write5BeersFromServerAsync(beers);
+            } while (true);
+        }
+            private static async Task Write5BeersFromServerAsync(Dictionary<int, List<Beer>> beers)
+                {
+                    foreach (Beer beer in beers.First().Value)
+                    {
+                        Console.WriteLine(beer);
+                    }
+                }
     }
-
-
+    
 }
+
+
+
+

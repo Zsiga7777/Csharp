@@ -7,4 +7,6 @@ public interface IBaseService<T, TKey> where T : class
     void Update(T model);
     void Delete(TKey id);
     ICollection<T> GetAll();
+
+    IDictionary<int, ICollection<T>> GetFiveRecords(int pageNumber);
 }
