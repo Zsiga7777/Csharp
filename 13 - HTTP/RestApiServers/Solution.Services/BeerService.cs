@@ -45,7 +45,7 @@ public class BeerService : BaseService<Beer, int>, IBeerService<Beer, int>
         }
         else
         {
-            pageNumber = Items.Count / 5;
+            pageNumber = Items.Count / 5 -1;
             if (Items.Count - pageNumber * 5 == 0)
             {
                 result.Add(pageNumber, Items.TakeLast(5).ToList());
@@ -57,7 +57,16 @@ public class BeerService : BaseService<Beer, int>, IBeerService<Beer, int>
         }
         return result;
     }
-            
+    //egyszerűbb
+    //public override IDictionary<int, ICollection<Beer>> GetFiveRecords(int pageNumber)
+    //{
+    //    return new Dictionary<int, ICollection<Beer>>
+    //    {
+    //        {
+    //            pageNumber, Items.Skip((pageNumber - 1) * 5).Take(5).ToList()
+    //        }
+    //    };
+    //}
 
     public override Beer GetById(int id)
     {

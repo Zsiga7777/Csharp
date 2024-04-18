@@ -17,6 +17,17 @@ public partial class GameController(IGameService<Game, int> service) : Controlle
     }
 
     [HttpGet]
+    [Route("/api/game/get-five/{pageNumber}")]
+    [SwaggerOperation(OperationId = "getFive")]
+    [Produces("application/json")]
+    [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(List<Game>))]
+    [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+    public async Task<IActionResult> GetFiveRecords([Required] int pageNumber)
+    {
+        return Ok(await Task.FromResult(service.GetFiveRecords(pageNumber)));
+    }
+
+    [HttpGet]
     [Route("/api/game/get/{id}")]
     [SwaggerOperation(OperationId = "get")]
     [Produces("application/json")]

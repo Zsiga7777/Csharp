@@ -5,11 +5,13 @@ VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpServices", "HttpServices\HttpServices.csproj", "{2E5B6194-8B63-4373-894C-570153EA5939}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeerApp", "BeerApp\BeerApp.csproj", "{18FF6011-0235-484B-9F4A-38BC83F6D366}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeerApp", "BeerApp\BeerApp.csproj", "{18FF6011-0235-484B-9F4A-38BC83F6D366}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomLibrary", "CustomLibrary\CustomLibrary.csproj", "{519F15B6-67C1-4BEF-B2BA-9FE3A1E8D923}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{C8ECCCD2-8C11-49A0-BF32-5611E3960907}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{C8ECCCD2-8C11-49A0-BF32-5611E3960907}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMOGameApp", "MMOGameApp\MMOGameApp.csproj", "{F8BB944D-D019-46E5-A1DE-E367807696DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C8ECCCD2-8C11-49A0-BF32-5611E3960907}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8ECCCD2-8C11-49A0-BF32-5611E3960907}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8ECCCD2-8C11-49A0-BF32-5611E3960907}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8BB944D-D019-46E5-A1DE-E367807696DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8BB944D-D019-46E5-A1DE-E367807696DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8BB944D-D019-46E5-A1DE-E367807696DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8BB944D-D019-46E5-A1DE-E367807696DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

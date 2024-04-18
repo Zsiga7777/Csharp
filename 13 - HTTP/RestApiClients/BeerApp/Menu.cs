@@ -14,8 +14,8 @@ namespace BeerApp
             switch (enteredNumber)
             {
                 case 1:
-                    bool result = await PostNewBeer();
-                    Console.WriteLine($"{(result ? "sikerült" : "nem sikerült")} a hozzáadás");
+                    Beer result = await PostNewBeer();
+                    Console.WriteLine($"{(result.Id > 0 ? "sikerült" : "nem sikerült")} a hozzáadás");
                     break;
                 case 2:
                     await Main();
@@ -86,7 +86,7 @@ namespace BeerApp
                 return;
             }
 
-            bool isSucces = await BeerService.SendDeleteRequestAsync("api/beer/delete", AppState.GetId());
+            bool isSucces = await BeerService.DeleteAsync(AppState.GetId());
             if (isSucces)
             {
                 AppState.Clear();
@@ -104,7 +104,7 @@ namespace BeerApp
             Beer updatedBeerData = GetUpdatedBeerData();
 
 
-            await BeerService.SendPutRequestAsync("api/beer/update", updatedBeerData);
+            await BeerService.UpdateAsync(updatedBeerData);
 
             Console.WriteLine($"Sikerült a módosítás.");
             await Task.Delay(3000);
@@ -131,7 +131,7 @@ namespace BeerApp
 
         }
 
-        private static async Task<bool> PostNewBeer()
+        private static async Task<Beer> PostNewBeer()
         {
             Beer beer = new Beer();
             beer.Name = ExtendentConsole.ReadString("Kérem a sör nevét: ");
@@ -142,8 +142,8 @@ namespace BeerApp
             int reviews = ExtendentConsole.ReadInteger(0, "Kérem az értékelések számát: ");
             beer.Rating = new Rating { Average = average, Reviews = reviews };
 
-            bool result = await BeerService.SendPostRequestAsync("api/beer/create", beer);
-            return result;
+            beer = await BeerService.SendPostRequestAsync<Beer>("api/beer/create", beer);
+            return beer;
         }
 
         private static async Task ListAllBeers()
@@ -226,6 +226,8 @@ namespace BeerApp
         {
             Dictionary<int, List<Beer>> beers = await BeerService.SendGetRequestAsync<Dictionary<int, List<Beer>>>("api/beer/get-five", 0);
             int pageNumber = 0;
+            Console.Clear();
+            await Write5BeersFromServerAsync(beers);
             do
             {
                 pageNumber = beers.Keys.First();

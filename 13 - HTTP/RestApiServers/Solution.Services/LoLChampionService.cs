@@ -43,7 +43,7 @@ public class LoLChampionService : BaseService<Champion, int>, ILoLChampionServic
         }
         else
         {
-            pageNumber = Items.Count / 5;
+            pageNumber = Items.Count / 5-1;
             if (Items.Count - pageNumber * 5 == 0)
             {
                 result.Add(pageNumber, Items.TakeLast(5).ToList());
