@@ -7,8 +7,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CustomLibrary\CustomLibrary.csproj" />
-  </ItemGroup>
-
 </Project>

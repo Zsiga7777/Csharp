@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CustomLibrary\CustomLibrary.csproj" />
+    <ProjectReference Include="..\HttpServices\HttpServices.csproj" />
   </ItemGroup>
 
 </Project>

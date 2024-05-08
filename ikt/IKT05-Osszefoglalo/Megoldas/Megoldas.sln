@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Osszefoglalo", "Osszefoglalo\Osszefoglalo.csproj", "{57890B73-D59A-4822-BBDC-9B57A7ADEE88}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomLibrary", "..\..\4.ikt\SolutionFeladat\CustomLibrary\CustomLibrary.csproj", "{0B7C70A9-F377-469A-8E1D-85358ED116E5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57890B73-D59A-4822-BBDC-9B57A7ADEE88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57890B73-D59A-4822-BBDC-9B57A7ADEE88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57890B73-D59A-4822-BBDC-9B57A7ADEE88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57890B73-D59A-4822-BBDC-9B57A7ADEE88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B7C70A9-F377-469A-8E1D-85358ED116E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B7C70A9-F377-469A-8E1D-85358ED116E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B7C70A9-F377-469A-8E1D-85358ED116E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B7C70A9-F377-469A-8E1D-85358ED116E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B235E837-7617-4B23-B771-60C6456B28F5}
+	EndGlobalSection
+EndGlobal
