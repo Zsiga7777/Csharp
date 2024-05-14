@@ -18,5 +18,10 @@
             MobileNumber = mobileNumber;
             Message = message;
         }
+
+        public override string ToString()
+        {
+            return $"{MobileNumber} - {FirstName} {LastName} ";
+        }
     }
 }

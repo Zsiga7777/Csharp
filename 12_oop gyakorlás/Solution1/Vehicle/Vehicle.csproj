@@ -8,8 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\4.ikt\SolutionFeladat\CustomLibrary\CustomLibrary.csproj" />
-    <ProjectReference Include="..\CustomLibrary\CustomLibrary.csproj" />
+    <Folder Include="data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="data\valami.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

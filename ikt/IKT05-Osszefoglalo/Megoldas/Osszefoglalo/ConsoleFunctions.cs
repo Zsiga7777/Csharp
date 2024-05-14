@@ -34,7 +34,7 @@ namespace Osszefoglalo
                 input = Console.ReadLine();
                 isgood = DateTime.TryParse(input, out result);
             }
-            while (!isgood && result > minDateTime);
+            while (!isgood || result < minDateTime);
             return result;
         }
 
@@ -49,7 +49,7 @@ namespace Osszefoglalo
                 input = Console.ReadLine();
                 isgood = DateTime.TryParse(input, out result);
             }
-            while (!isgood && result < maxDateTime);
+            while (!isgood || result > maxDateTime);
             return result;
         }
 
@@ -90,7 +90,7 @@ namespace Osszefoglalo
                 phoneNumberCopy = phoneNumber;
                 partsOfNumbers = phoneNumberCopy.Split('-');
 
-                if (partsOfNumbers[0].Length == 3 && partsOfNumbers[1].Length == 3 && partsOfNumbers[2].Length == 4)
+                if (partsOfNumbers.Length>=3 && partsOfNumbers[0].Length == 3 && partsOfNumbers[1].Length == 3 && partsOfNumbers[2].Length == 4)
                 { 
                     isGoodPattern = true;
                 }
@@ -101,6 +101,23 @@ namespace Osszefoglalo
 
             return message;
         }
+
+        public static List<string> GetFileNames(string folderName)
+        {
+            string folderPath = Path.GetFullPath("data").Replace($"bin\\Debug\\net8.0\\", "");
+            List<string> nameOfFiles = Directory.GetFileSystemEntries(folderPath).ToList();
+            string[] temp = null;
+
+            for (int i = 0; i < nameOfFiles.Count;i++)
+            {
+                temp = nameOfFiles[i].Split("\\");
+                nameOfFiles[i] = temp[temp.Length - 1].Split(".")[0];
+            }
+
+            return nameOfFiles;
+        }
+
+
     }
 
     
