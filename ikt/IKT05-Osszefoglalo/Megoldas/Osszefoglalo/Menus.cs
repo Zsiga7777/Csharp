@@ -16,11 +16,15 @@ namespace Osszefoglalo
                 switch (selectedOption)
                 {
                     case 0:
-                        await DataService.CreateNewMessage();
+                        await DataService.CreateNewMessageAsync();
                         break;
                     case 1:
-                        await DataService.DeleteMessage();
+                        await DataService.DeleteMessageAsync();
                         break;
+                    case 2:
+                        await DataService.SendMessageAsync();
+                        break;
+
                 }
 
             } 

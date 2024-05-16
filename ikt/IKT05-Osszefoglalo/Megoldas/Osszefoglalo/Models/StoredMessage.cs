@@ -3,18 +3,18 @@
     public class StoredMessage
     {
         public string System { get;  set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string MobileNumber { get; set; }
-        public string Message { get; set; }
+        public string FirstName { get;  set; }
+        public string LastName { get;  set; }
+        public string MobileNumber { get;  set; }
+        public string Message { get;  set; }
 
         public StoredMessage() { }
 
-        public StoredMessage(string system, string firstname, string lastname, string mobileNumber, string message) 
-        { 
+        public StoredMessage(string system, string firstName, string lastName, string mobileNumber, string message) 
+        {
             System = system;
-            FirstName = firstname;
-            LastName = lastname;
+            FirstName = firstName;
+            LastName = lastName;
             MobileNumber = mobileNumber;
             Message = message;
         }

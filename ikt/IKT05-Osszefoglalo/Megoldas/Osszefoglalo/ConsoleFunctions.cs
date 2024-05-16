@@ -54,51 +54,38 @@ namespace Osszefoglalo
         }
 
         public static StoredMessage GetMessageData()
-        {   StoredMessage message = new StoredMessage();
+        {
+            StoredMessage message = null;
+            string system = null;
+            string firstname;
+            string lastname;
+            string text;
+            string mobileNumber;
+
             int systemId = Menus.ReusableMenu(["IOS", "Android", "Windows"]);
+           
+            firstname = ExtendentConsole.ReadString("Kérem a keresztnevét: ");
+            lastname = ExtendentConsole.ReadString("Kérem a családnevét: ");
+            text = ExtendentConsole.ReadString("Kérem az üzenetet: ");
+            mobileNumber = GetPhoneNumber();
 
             switch (systemId)
             {
                 case -1:
                     return null;
                 case 0:
-                    message.System = "ios";
+                    system = "ios";
                     break;
                 case 1:
-                    message.System = "android";
+                    system = "android";
+                    
                     break;
                 case 2:
-                    message.System = "windows";
+                    system = "windows";
+                   
                     break;
             }
-
-            message.FirstName = ExtendentConsole.ReadString("Kérem a keresztnevét: ");
-            message.LastName = ExtendentConsole.ReadString("Kérem a családnevét: ");
-            message.Message = ExtendentConsole.ReadString("Kérem az üzenetet: ");
-
-            string phoneNumber = null;
-            string phoneNumberCopy = null;
-            long temp = 0;
-            bool isNumber = false;
-            string[] partsOfNumbers = null;
-            bool isGoodPattern = false;
-            do
-            {
-            phoneNumber = ExtendentConsole.ReadString("Kérem a telefonszámot ***-***-**** formában: ").Trim();
-                phoneNumberCopy = phoneNumber.Replace("-", "");
-                isNumber = long.TryParse(phoneNumberCopy, out  temp) ;
-                phoneNumberCopy = phoneNumber;
-                partsOfNumbers = phoneNumberCopy.Split('-');
-
-                if (partsOfNumbers.Length>=3 && partsOfNumbers[0].Length == 3 && partsOfNumbers[1].Length == 3 && partsOfNumbers[2].Length == 4)
-                { 
-                    isGoodPattern = true;
-                }
-            }
-            while (!isNumber || temp.ToString().Length != 10 || !isGoodPattern);
-            
-            message.MobileNumber = phoneNumber;
-
+            message = new StoredMessage(system, firstname, lastname, mobileNumber, text);
             return message;
         }
 
@@ -117,6 +104,31 @@ namespace Osszefoglalo
             return nameOfFiles;
         }
 
+        public static string GetPhoneNumber() 
+        {
+            string phoneNumber = null;
+            string phoneNumberCopy = null;
+            long temp = 0;
+            bool isNumber = false;
+            string[] partsOfNumbers = null;
+            bool isGoodPattern = false;
+            do
+            {
+                phoneNumber = ExtendentConsole.ReadString("Kérem a telefonszámot ***-***-**** formában: ").Trim();
+                phoneNumberCopy = phoneNumber.Replace("-", "");
+                isNumber = long.TryParse(phoneNumberCopy, out temp);
+                phoneNumberCopy = phoneNumber;
+                partsOfNumbers = phoneNumberCopy.Split('-');
+
+                if (partsOfNumbers.Length >= 3 && partsOfNumbers[0].Length == 3 && partsOfNumbers[1].Length == 3 && partsOfNumbers[2].Length == 4)
+                {
+                    isGoodPattern = true;
+                }
+            }
+            while (!isNumber || temp.ToString().Length != 10 || !isGoodPattern);
+
+            return phoneNumber;
+        }
 
     }
 

@@ -1,4 +1,5 @@
 ﻿
+using System.Text;
 using System.Text.Json;
 
 namespace Osszefoglalo
@@ -31,6 +32,20 @@ namespace Osszefoglalo
             string path = Path.Combine(folderPath, fileName);
             using FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None, 128);
             await JsonSerializer.SerializeAsync(fs, list);
+        }
+
+        public static async Task WriteToTxtFile<T>(List<T> list, string fileName, string folderName)
+        {
+            Directory.CreateDirectory($"..\\..\\..\\{folderName}");
+            string folderPath = Path.GetFullPath($"{folderName}").Replace($"bin\\Debug\\net8.0\\", "");
+            string path = Path.Combine(folderPath, fileName);
+
+            using FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None, 128);
+            using StreamWriter sw = new StreamWriter(fs, Encoding.UTF8);
+            foreach (var item in list)
+            {
+                await sw.WriteLineAsync($"{item}");
+            }
         }
 
     }

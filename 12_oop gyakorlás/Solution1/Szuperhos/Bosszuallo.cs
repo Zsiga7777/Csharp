@@ -15,10 +15,35 @@ public abstract class Bosszuallo : ISzuperhos
 
     public bool LegyoziE(ISzuperhos szuperhos)
     {
-       bool nyerE = false;
-        if (szuperhos.GetType() == typeof(Bosszuallo))
+        //bool nyerE = false;
+        // if (szuperhos.GetType() == typeof(Bosszuallo))
+        // {
+        //     if (this.Szuperero > szuperhos.MekkoraAzEreje() && !this.VanEGyengesege)
+        //     {
+        //         nyerE = true;
+        //     }
+        //     else
+        //     {
+        //         nyerE = false;
+        //     }
+        // }
+        // else
+        // {
+        //     if (this.Szuperero > szuperhos.MekkoraAzEreje() * 2)
+        //     {
+        //         nyerE = true;
+        //     }
+        //     else
+        //     {
+        //         nyerE = false;
+        //     }
+        // }
+        // return nyerE;
+
+        bool nyerE = false;
+        if (szuperhos is Bosszuallo b)
         {
-            if (this.Szuperero > szuperhos.MekkoraAzEreje() && !this.VanEGyengesege)
+            if (this.Szuperero > szuperhos.MekkoraAzEreje() && b.VanEGyengesege)
             {
                 nyerE = true;
             }

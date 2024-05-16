@@ -10,10 +10,8 @@ namespace Osszefoglalo.Models
         public string MobileNumber { get; private set; }
         public string Message { get; private set; }
 
-        public Response Response { get; private set; }
-
         public abstract MessageToSend CreateMessage();
-        public abstract Task<Response> SendMessage();
+        public abstract Task<Response> SendMessageAsync();
 
         public OperatingSystemMy()
         {
@@ -27,5 +25,6 @@ namespace Osszefoglalo.Models
             MobileNumber = mobileNumber;
             Message = message;
         }
+
     }
 }

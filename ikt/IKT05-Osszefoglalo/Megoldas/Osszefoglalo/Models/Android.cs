@@ -10,7 +10,7 @@ namespace Osszefoglalo.Models
                 return message;
             }
 
-            public override async Task<Response> SendMessage()
+            public override async Task<Response> SendMessageAsync()
             {
                 Response response = await HTTPService.SendPostRequestAsync("api/send/android", CreateMessage());
                 return response;

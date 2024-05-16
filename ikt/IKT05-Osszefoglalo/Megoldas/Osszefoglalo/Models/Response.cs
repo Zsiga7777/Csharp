@@ -14,5 +14,12 @@ namespace Osszefoglalo.Models
 
         [JsonPropertyName("dateTime")]
         public DateTime DateTime { get; set; }
+
+        public override string ToString()
+        {
+            return $"{IsSucces};{ErrorMessage};{DateTime}";
+        }
     }
+
+    
 }

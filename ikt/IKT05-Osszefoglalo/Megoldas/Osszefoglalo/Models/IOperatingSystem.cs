@@ -8,10 +8,8 @@
         string MobileNumber { get; }
         string Message { get; }
 
-        Response Response { get; }
-
         public MessageToSend CreateMessage();
-        public Task<Response> SendMessage();
+        public Task<Response> SendMessageAsync();
 
     }
 }
