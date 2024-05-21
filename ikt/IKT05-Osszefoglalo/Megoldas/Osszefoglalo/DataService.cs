@@ -13,11 +13,11 @@ namespace Osszefoglalo
 
             string fileName = $"messages_({selectedDate.Year}-{selectedDate.Month}-{selectedDate.Day}).json";
 
-            List<StoredMessage> storedMessages = await FileService.ReadFromFileAsync<StoredMessage>(fileName, "data");
+            List<StoredMessage> storedMessages = await FileService.ReadFromJsonFileAsync<StoredMessage>(fileName, "data");
 
             storedMessages.Add(message);
 
-            await FileService.WriteToJsonFile(storedMessages, fileName, "data");
+            await FileService.WriteToJsonFileAsync(storedMessages, fileName, "data");
         }
 
         public static async Task DeleteMessageAsync()
@@ -27,7 +27,7 @@ namespace Osszefoglalo
             if (selectedFile == -1) { return; }
 
             string fileName = fileNames[selectedFile] + ".json";
-            List<StoredMessage> storedMessages = await FileService.ReadFromFileAsync<StoredMessage>(fileName, "data");
+            List<StoredMessage> storedMessages = await FileService.ReadFromJsonFileAsync<StoredMessage>(fileName, "data");
 
             int selectedMessage = Menus.ReusableMenu(storedMessages);
             if (selectedMessage == -1) { return; }
@@ -40,7 +40,7 @@ namespace Osszefoglalo
             }
             else
             {
-                await FileService.WriteToJsonFile(storedMessages, fileName , "data");
+                await FileService.WriteToJsonFileAsync(storedMessages, fileName , "data");
             }
 
         }
@@ -49,7 +49,7 @@ namespace Osszefoglalo
         { 
             DateTime today = DateTime.Now;
             string fileName = $"messages_({today.Year}-{today.Month}-{today.Day}).json";
-            List<OperatingSystemMy> storedMessages = FactorialMessageCreator( await FileService.ReadFromFileAsync<StoredMessage>(fileName, "data"));
+            List<OperatingSystemMy> storedMessages = FactorialMessageCreator( await FileService.ReadFromJsonFileAsync<StoredMessage>(fileName, "data"));
 
             if (storedMessages.Count == 0) 
             {
@@ -81,9 +81,27 @@ namespace Osszefoglalo
                     unsuccesfulResponses.Add(respons);
                 }
             }
-            await FileService.WriteToTxtFile(succesfulResponses, $"delivered_({today.Year}-{today.Month}-{today.Day}).txt" , "logs");
-            await FileService.WriteToTxtFile(unsuccesfulResponses, $"not-delivered_({today.Year}-{today.Month}-{today.Day}).txt", "logs");
+            await FileService.WriteToTxtFileAsync(succesfulResponses, $"delivered_({today.Year}-{today.Month}-{today.Day}).txt" , "logs");
+            await FileService.WriteToTxtFileAsync(unsuccesfulResponses, $"not-delivered_({today.Year}-{today.Month}-{today.Day}).txt", "logs");
 
+        }
+
+        public static async Task MakeReportAsnyc()
+        {
+            List<string> dates = GetDatesFromFileNames("logs");
+
+            int selectedDate = Menus.ReusableMenu(dates);
+            if (selectedDate == -1) { return; }
+
+            List<Response> succesfulResponses = await FileService.ReadFromLogsTxtFileAsync($"delivered_({dates[selectedDate]}).txt", "logs");
+            List<Response> unsuccesfulResponses = await FileService.ReadFromLogsTxtFileAsync($"not-delivered_({dates[selectedDate]}).txt", "logs");
+
+            Report report = CreateReport(succesfulResponses, unsuccesfulResponses);
+
+            await FileService.WriteToJsonFileAsync<Report>([report], $"report_({dates[selectedDate]}).json", "report");
+            Console.Clear();
+            Console.WriteLine(report);
+            await Task.Delay(10000);
         }
 
         public static List<OperatingSystemMy> FactorialMessageCreator(List<StoredMessage> data)
@@ -109,6 +127,43 @@ namespace Osszefoglalo
             }
 
             return result;
+        }
+
+        public static List<string> GetDatesFromFileNames(string folder)
+        {
+            List<string> fileNames = ConsoleFunctions.GetFileNames(folder);
+            List<string> dates = new List<string>();
+            string[] temp = null;
+            foreach (var filename in fileNames)
+            {
+                temp = filename.Split('(');
+                temp = temp[1].Split(")");
+                dates.Add(temp[0]);
+            }
+            dates = dates.Distinct().ToList();
+
+            return dates;
+        }
+
+        public static Report CreateReport(List<Response> succesfulResponses, List<Response> unsuccesfulResponses)
+        {
+            Report report = new Report();
+            report.Success = succesfulResponses.Count;
+            report.Date = succesfulResponses[0].DateTime;
+
+            foreach (var response in unsuccesfulResponses)
+            {
+                if (report.Errors.Any(x => x.Reason == response.ErrorMessage))
+                {
+                    report.Errors.First(x => x.Reason == response.ErrorMessage).Count++;
+                }
+                else
+                {
+                    report.Errors.Add(new Error(response.ErrorMessage, 1));
+                }
+            }
+
+            return report;
         }
     }
 }

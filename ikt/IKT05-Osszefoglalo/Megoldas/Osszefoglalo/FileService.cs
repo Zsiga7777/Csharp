@@ -1,4 +1,5 @@
 ﻿
+using Osszefoglalo.Models;
 using System.Text;
 using System.Text.Json;
 
@@ -6,7 +7,7 @@ namespace Osszefoglalo
 {
     public static class FileService
     {
-        public static async Task<List<T>> ReadFromFileAsync<T>(string fileName, string folderName)
+        public static async Task<List<T>> ReadFromJsonFileAsync<T>(string fileName, string folderName)
         {
             Directory.CreateDirectory($"..\\..\\..\\{folderName}");
             string folderPath = Path.GetFullPath($"{folderName}").Replace($"bin\\Debug\\net8.0\\", "");
@@ -25,7 +26,7 @@ namespace Osszefoglalo
             return result;
         }
 
-        public static async Task WriteToJsonFile<T>(List<T> list, string fileName, string folderName)
+        public static async Task WriteToJsonFileAsync<T>(List<T> list, string fileName, string folderName)
         {
             Directory.CreateDirectory($"..\\..\\..\\{folderName}");
             string folderPath = Path.GetFullPath($"{folderName}").Replace($"bin\\Debug\\net8.0\\", "");
@@ -34,7 +35,7 @@ namespace Osszefoglalo
             await JsonSerializer.SerializeAsync(fs, list);
         }
 
-        public static async Task WriteToTxtFile<T>(List<T> list, string fileName, string folderName)
+        public static async Task WriteToTxtFileAsync<T>(List<T> list, string fileName, string folderName)
         {
             Directory.CreateDirectory($"..\\..\\..\\{folderName}");
             string folderPath = Path.GetFullPath($"{folderName}").Replace($"bin\\Debug\\net8.0\\", "");
@@ -46,6 +47,36 @@ namespace Osszefoglalo
             {
                 await sw.WriteLineAsync($"{item}");
             }
+        }
+
+        public static async Task<List<Response>> ReadFromLogsTxtFileAsync(string fileName, string folderName)
+        {
+            Directory.CreateDirectory($"..\\..\\..\\{folderName}");
+            string folderPath = Path.GetFullPath($"{folderName}").Replace($"bin\\Debug\\net8.0\\", "");
+            string path = Path.Combine(folderPath, fileName);
+
+            List<Response>? result = new List<Response>();
+            string[] temp;
+            string line;
+            Response response = null;
+
+            using FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read, FileShare.None, 128);
+            using StreamReader sr = new StreamReader(fs, Encoding.UTF8);
+
+            while (!sr.EndOfStream)
+            { 
+                line =await sr.ReadLineAsync();
+                temp = line.Split(";");
+
+                response = new Response();
+                response.IsSucces =bool.Parse( temp[0]);
+                response.ErrorMessage = temp[1];
+                response.DateTime = DateTime.Parse(temp[2]);
+
+                result.Add(response);
+            }
+
+            return result;
         }
 
     }

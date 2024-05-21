@@ -24,6 +24,9 @@ namespace Osszefoglalo
                     case 2:
                         await DataService.SendMessageAsync();
                         break;
+                    case 3:
+                        await DataService.MakeReportAsnyc();
+                        break;
 
                 }
 

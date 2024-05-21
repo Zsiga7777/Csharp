@@ -91,7 +91,7 @@ namespace Osszefoglalo
 
         public static List<string> GetFileNames(string folderName)
         {
-            string folderPath = Path.GetFullPath("data").Replace($"bin\\Debug\\net8.0\\", "");
+            string folderPath = Path.GetFullPath($"{folderName}").Replace($"bin\\Debug\\net8.0\\", "");
             List<string> nameOfFiles = Directory.GetFileSystemEntries(folderPath).ToList();
             string[] temp = null;
 

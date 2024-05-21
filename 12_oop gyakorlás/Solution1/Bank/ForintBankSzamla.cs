@@ -1,0 +1,24 @@
+﻿
+public class ForintBankSzamla : BankSzamla, IBetet
+{
+    public ForintBankSzamla(int id, Tulajdonos tulajdonos, int szamlaSzam, double egyenleg) : base(id, tulajdonos, szamlaSzam, egyenleg)
+    {
+    }
+
+    public override void Fizetes()
+    {
+        Egyenleg -= Egyenleg * 0.00001;
+    }
+
+    public void Kamatozik()
+    {
+        Egyenleg += Egyenleg * 0.008;
+    }
+
+    public override string ToString()
+    {
+        return $"{base.ToString()} HUF";
+    }
+
+}
+
