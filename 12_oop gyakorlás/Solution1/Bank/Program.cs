@@ -9,7 +9,7 @@ List<BankSzamla> bankSzamlak = new List<BankSzamla>
 foreach (var bank in bankSzamlak)
 {
 
-    bank.Fizetes();
+    bank.Fizetes(1000);
     Console.WriteLine(bank); 
     (bank as IBetet).Kamatozik();
     Console.WriteLine();

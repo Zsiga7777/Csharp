@@ -2,8 +2,12 @@
 public class DevizaBankSzamla : BankSzamla, IBetet
 {
     public DevizaTipusEnum DevizaTipus { get; set; }
-    public override void Fizetes()
+    public override void Fizetes(int osszeg)
     {
+        if (osszeg < Egyenleg)
+        {
+            Egyenleg -= osszeg;
+        }
         Egyenleg -= Egyenleg * 0.000015; ;
     }
 

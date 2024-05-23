@@ -5,8 +5,12 @@ public class ForintBankSzamla : BankSzamla, IBetet
     {
     }
 
-    public override void Fizetes()
+    public override void Fizetes(int osszeg)
     {
+        if(osszeg < Egyenleg)
+        {
+            Egyenleg -= osszeg;
+        }
         Egyenleg -= Egyenleg * 0.00001;
     }
 

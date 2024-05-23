@@ -22,11 +22,11 @@ namespace Osszefoglalo
 
         public static async Task DeleteMessageAsync()
         {
-            List<string> fileNames = ConsoleFunctions.GetFileNames("data");
+            List<string> fileNames = GetDatesFromFileNames("data", DateTime.Today);
             int selectedFile = Menus.ReusableMenu(fileNames);
             if (selectedFile == -1) { return; }
 
-            string fileName = fileNames[selectedFile] + ".json";
+            string fileName = "messages_(" + fileNames[selectedFile] +")" + ".json";
             List<StoredMessage> storedMessages = await FileService.ReadFromJsonFileAsync<StoredMessage>(fileName, "data");
 
             int selectedMessage = Menus.ReusableMenu(storedMessages);
@@ -139,6 +139,25 @@ namespace Osszefoglalo
                 temp = filename.Split('(');
                 temp = temp[1].Split(")");
                 dates.Add(temp[0]);
+            }
+            dates = dates.Distinct().ToList();
+
+            return dates;
+        }
+
+        public static List<string> GetDatesFromFileNames(string folder, DateTime max)
+        {
+            List<string> fileNames = ConsoleFunctions.GetFileNames(folder);
+            List<string> dates = new List<string>();
+            string[] temp = null;
+            foreach (var filename in fileNames)
+            {
+                temp = filename.Split('(');
+                temp = temp[1].Split(")");
+                if (max >= DateTime.Parse(temp[0]))
+                {
+                    dates.Add(temp[0]);
+                }
             }
             dates = dates.Distinct().ToList();
 

@@ -1,5 +1,7 @@
 ﻿
 
+using Osszefoglalo.enums;
+
 namespace Osszefoglalo.Models
 {
     public class IOS : OperatingSystemMy

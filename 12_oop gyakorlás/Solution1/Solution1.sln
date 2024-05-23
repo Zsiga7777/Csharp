@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ingatlan", "Ingatlan\Ingatl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UrhajokSajat", "UrhajokSajat\UrhajokSajat.csproj", "{948D75DD-0499-4268-A92E-5F776B56CAA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bank", "Bank\Bank.csproj", "{20C31DAA-020F-405D-B3B0-9FDE7E12E296}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank", "Bank\Bank.csproj", "{20C31DAA-020F-405D-B3B0-9FDE7E12E296}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOL", "LOL\LOL.csproj", "{C80250A2-67D0-4A3A-AE76-7B61E13C1129}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{20C31DAA-020F-405D-B3B0-9FDE7E12E296}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20C31DAA-020F-405D-B3B0-9FDE7E12E296}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20C31DAA-020F-405D-B3B0-9FDE7E12E296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C80250A2-67D0-4A3A-AE76-7B61E13C1129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C80250A2-67D0-4A3A-AE76-7B61E13C1129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C80250A2-67D0-4A3A-AE76-7B61E13C1129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C80250A2-67D0-4A3A-AE76-7B61E13C1129}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

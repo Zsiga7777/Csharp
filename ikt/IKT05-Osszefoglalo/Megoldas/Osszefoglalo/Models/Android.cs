@@ -1,4 +1,6 @@
 ﻿
+using Osszefoglalo.enums;
+
 namespace Osszefoglalo.Models
 {
     public class Android : OperatingSystemMy

@@ -8,7 +8,7 @@
 
     public double Egyenleg { get; set; }
 
-    public abstract void Fizetes();
+    public abstract void Fizetes(int osszeg);
 
     public double EgyenlegLekerese()
     {

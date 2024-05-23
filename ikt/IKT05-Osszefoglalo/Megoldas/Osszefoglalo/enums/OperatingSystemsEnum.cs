@@ -1,6 +1,4 @@
-﻿
-
-namespace Osszefoglalo.Models
+﻿namespace Osszefoglalo.enums
 {
     public enum OperatingSystemsEnum : byte
     {
