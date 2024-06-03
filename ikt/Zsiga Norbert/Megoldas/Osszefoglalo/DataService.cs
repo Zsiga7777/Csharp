@@ -7,7 +7,9 @@ namespace Osszefoglalo
     {
         public static async Task CreateNewMessageAsync()
         {
-            StoredMessage message =ConsoleFunctions.GetMessageData();
+            StoredMessage? message =ConsoleFunctions.GetMessageData();
+
+            if (message is null) return;
 
             DateTime selectedDate = ConsoleFunctions.ReadDate(DateTime.Now.Date);
 
@@ -22,11 +24,11 @@ namespace Osszefoglalo
 
         public static async Task DeleteMessageAsync()
         {
-            List<string> fileNames = GetDatesFromFileNames("data", DateTime.Today);
-            int selectedFile = Menus.ReusableMenu(fileNames);
+            List<string> fileDates = GetDatesFromFileNames("data", DateTime.Today);
+            int selectedFile = Menus.ReusableMenu(fileDates);
             if (selectedFile == -1) { return; }
 
-            string fileName = "messages_(" + fileNames[selectedFile] +")" + ".json";
+            string fileName = "messages_(" + fileDates[selectedFile] +")" + ".json";
             List<StoredMessage> storedMessages = await FileService.ReadFromJsonFileAsync<StoredMessage>(fileName, "data");
 
             int selectedMessage = Menus.ReusableMenu(storedMessages);
@@ -66,7 +68,12 @@ namespace Osszefoglalo
                 response =await message.SendMessageAsync();
                 responses.Add(response);
             }
+            await MakeLogsAsync(responses);
+        }
 
+        public static async Task MakeLogsAsync(List<Response> responses)
+        {
+            DateTime today = DateTime.Now;
             List<Response> succesfulResponses = new List<Response>();
             List<Response> unsuccesfulResponses = new List<Response>();
 
@@ -81,7 +88,7 @@ namespace Osszefoglalo
                     unsuccesfulResponses.Add(respons);
                 }
             }
-            await FileService.WriteToTxtFileAsync(succesfulResponses, $"delivered_({today.Year}-{today.Month}-{today.Day}).txt" , "logs");
+            await FileService.WriteToTxtFileAsync(succesfulResponses, $"delivered_({today.Year}-{today.Month}-{today.Day}).txt", "logs");
             await FileService.WriteToTxtFileAsync(unsuccesfulResponses, $"not-delivered_({today.Year}-{today.Month}-{today.Day}).txt", "logs");
 
         }

@@ -63,12 +63,6 @@ namespace Osszefoglalo
             string mobileNumber;
 
             int systemId = Menus.ReusableMenu(["IOS", "Android", "Windows"]);
-           
-            firstname = ExtendentConsole.ReadString("Kérem a keresztnevét: ");
-            lastname = ExtendentConsole.ReadString("Kérem a családnevét: ");
-            text = ExtendentConsole.ReadString("Kérem az üzenetet: ");
-            mobileNumber = GetPhoneNumber();
-
             switch (systemId)
             {
                 case -1:
@@ -78,13 +72,20 @@ namespace Osszefoglalo
                     break;
                 case 1:
                     system = "android";
-                    
+
                     break;
                 case 2:
                     system = "windows";
-                   
+
                     break;
             }
+
+            firstname = ExtendentConsole.ReadString("Kérem a keresztnevét: ");
+            lastname = ExtendentConsole.ReadString("Kérem a családnevét: ");
+            text = ExtendentConsole.ReadString("Kérem az üzenetet: ");
+            mobileNumber = GetPhoneNumber();
+
+            
             message = new StoredMessage(system, firstname, lastname, mobileNumber, text);
             return message;
         }
